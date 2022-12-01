@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 // import Faq from "./pages/faq/Faq";
 import Navigation from './routes/navigation/navigation.component';
 import Lottery from './routes/lottery/lottery.component';
+import Administration from './routes/administration/administration.component';
 import Home from "./pages/home/Home";
 // import List from "./pages/list/List";
 // const Home = () => {
@@ -17,7 +18,7 @@ const App = () => {
   return (
     <Routes>
       <Route path='/' element={<Navigation/>}>
-        <Route index element={<Home />} />
+        <Route index element={<Administration />} />
         <Route path='lottery' element={<Lottery/>} />
       </Route>
     </Routes>
