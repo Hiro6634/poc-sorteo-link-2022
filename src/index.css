@@ -1,0 +1,15 @@
+body {
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/LinkBackground2022.png');
+  background-position: 0 0;
+  background-size: cover;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
