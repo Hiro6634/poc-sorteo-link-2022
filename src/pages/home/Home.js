@@ -30,7 +30,7 @@ class App extends Component {
       placeholder: 'Please enter the draw items here. One item per line.',
       valid: false,
       touched: false,
-      validationRules: {
+      validationRules: { 
         minLength: 3,
         isRequired: true,
       },

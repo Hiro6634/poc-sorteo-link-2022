@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "premio":"15mil pesos",
+        "ganadores":9
+    },
+    {
+        "id": 2,
+        "premio":"15mil pesos",
+        "ganadores":9
+    },
+    {
+        "id": 3,
+        "premio":"15mil pesos",
+        "ganadores":9
+    },
+    {
+        "id": 4,
+        "premio":"30mil pesos",
+        "ganadores":4
+    },
+    {
+        "id": 5,
+        "premio":"60mil pesos",
+        "ganadores":2
+    },
+    {
+        "id": 6,
+        "premio":"80mil pesos",
+        "ganadores":1
+    }
+]
