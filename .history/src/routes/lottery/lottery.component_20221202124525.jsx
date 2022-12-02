@@ -3,7 +3,6 @@ import NamesLoop from '../../components/namesloop/namesloop.component';
 import { useContext } from 'react';
 import { WinnerContext } from '../../context/winners.context';
 
-
 import { 
     LotteryContainer,
     Title 
