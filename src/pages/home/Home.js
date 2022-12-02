@@ -6,7 +6,6 @@ import React, { Component } from 'react';
 
 import Confetti from 'react-dom-confetti';
 import DrawForm from '../../components/DrawForm';
-import PreviouslyDrawnItemsBlock from '../../components/PreviouslyDrawnItemsBlock';
 import { REVIEW } from '../Json-ld';
 import SiteWrapper from '../../SiteWrapper';
 import TextLoop from 'react-text-loop';
@@ -142,9 +141,6 @@ class App extends Component {
                 >
                   {disableDrawButton ? 'Drawing...' : 'Draw'}
                 </Button>
-              </Grid.Col>
-              <Grid.Col md={4} sm={12}>
-                <PreviouslyDrawnItemsBlock pastDrawnItems={pastDrawnItems} />
               </Grid.Col>
             </Grid.Row>
           </div>

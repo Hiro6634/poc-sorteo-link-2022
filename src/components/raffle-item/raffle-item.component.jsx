@@ -1,9 +1,13 @@
-const RaffleItem = ({title, maxWinners, state}) => {
+const RaffleItem = ({reward, maxWinners, state}) => {
     return(
         <div>
-            <span>{title}</span>
+            |
+            <span>{reward}</span>
+            |
             <span>{maxWinners}</span>
+            |
             <span>{state}</span>
+            |
         </div>
     );
 }
