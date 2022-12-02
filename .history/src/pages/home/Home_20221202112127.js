@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 
 import Confetti from 'react-dom-confetti';
 import DrawForm from '../../components/DrawForm';
+import PreviouslyDrawnItemsBlock from '../../components/PreviouslyDrawnItemsBlock';
 import { REVIEW } from '../Json-ld';
 import SiteWrapper from '../../SiteWrapper';
 import TextLoop from 'react-text-loop';
@@ -30,7 +31,7 @@ class App extends Component {
       placeholder: 'Please enter the draw items here. One item per line.',
       valid: false,
       touched: false,
-      validationRules: { 
+      validationRules: {
         minLength: 3,
         isRequired: true,
       },
@@ -148,8 +149,11 @@ class App extends Component {
                   color="primary" 
                   type="file"
                   accept=".xls, .xlsx"
-                  onClick={excelAjson}
+                  onChange={this.excelAjson}
                 /> 
+              </Grid.Col>
+              <Grid.Col md={4} sm={12}>
+                <PreviouslyDrawnItemsBlock pastDrawnItems={pastDrawnItems} />
               </Grid.Col>
             </Grid.Row>
           </div>
