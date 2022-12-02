@@ -1,22 +1,14 @@
-import { func } from '../../utils/iofiles/xml-load-file';
-
-import { useContext } from 'react';
-import { SorteoContext } from '../../context/sorteos.context';
+import Raffles from '../../components/raffles/raffles.component';
 
 const Administration = () => {
-    const {sorteos} = useContext(SorteoContext);
 
     return(
         <div>
-            <h1>Administration Page</h1>
-                <div style={{color: 'white'}}>
-                {
-                    sorteos.map((sorteo)=>(
-                        <p key={sorteo.id}>{sorteo.premio}</p>
-                    )
-                )}
+            <h1>SORTEOS</h1>
+            <div>
+                <Raffles/>
             </div>
-                    </div>
+        </div>
     );
 
 

@@ -13,7 +13,7 @@ const NamesLoop = () => {
 
     return(
         <NameLoopContainer>
-            <TextLoop interval={150}>
+            <TextLoop interval={200}>
                 {employees.map((employee)=>(
                     <sapn id={employee.id}>{employee.lastName}, {employee.firstName}</sapn>
     ))}

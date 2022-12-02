@@ -2,31 +2,37 @@
     {
         "id": 1,
         "premio":"15mil pesos",
-        "ganadores":9
+        "ganadores":9,
+        "estado":"PENDIENTE"
     },
     {
         "id": 2,
         "premio":"15mil pesos",
-        "ganadores":9
+        "ganadores":9,
+        "estado":"PENDIENTE"
     },
     {
         "id": 3,
         "premio":"15mil pesos",
-        "ganadores":9
+        "ganadores":9,
+        "estado":"PENDIENTE"
     },
     {
         "id": 4,
         "premio":"30mil pesos",
-        "ganadores":4
+        "ganadores":4,
+        "estado":"PENDIENTE"
     },
     {
         "id": 5,
         "premio":"60mil pesos",
-        "ganadores":2
+        "ganadores":2,
+        "estado":"PENDIENTE"
     },
     {
         "id": 6,
         "premio":"80mil pesos",
-        "ganadores":1
+        "ganadores":1,
+        "estado":"PENDIENTE"
     }
 ]

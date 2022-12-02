@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { EmployeesProvider } from './context/employees.context';
-import { SorteosProvider } from './context/sorteos.context';
+import { RafflesProvider } from './context/raffles.context';
+import { WinnersProvider } from './context/winners.context';
 
 import './index.css';
 import App from './App';
@@ -12,9 +13,11 @@ ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
             <EmployeesProvider>
-                <SorteosProvider>
-                    <App /> 
-                </SorteosProvider>
+                <RafflesProvider>
+                    <WinnersProvider>
+                        <App /> 
+                    </WinnersProvider>
+                </RafflesProvider>
             </EmployeesProvider>
         </BrowserRouter>
     </React.StrictMode>, 
