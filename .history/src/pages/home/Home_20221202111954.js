@@ -10,7 +10,6 @@ import PreviouslyDrawnItemsBlock from '../../components/PreviouslyDrawnItemsBloc
 import { REVIEW } from '../Json-ld';
 import SiteWrapper from '../../SiteWrapper';
 import TextLoop from 'react-text-loop';
-import { excelAjson } from '../../utils/iofiles/xml-loader';
 
 class App extends Component {
   constructor(props) {
@@ -149,7 +148,7 @@ class App extends Component {
                   color="primary" 
                   type="file"
                   accept=".xls, .xlsx"
-                  onClick={excelAjson}
+                  
                 /> 
               </Grid.Col>
               <Grid.Col md={4} sm={12}>
@@ -174,6 +173,8 @@ class App extends Component {
       </SiteWrapper>
     );
   }
+  
 }
+import { excelAjson } from '../../utils/iofiles/xml-loader';
 
 export default App;

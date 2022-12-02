@@ -139,18 +139,19 @@ class App extends Component {
                   name="drawButton"
                   color="primary"
                   //onClick={this.randomDrawItem}
-                  
+                  onClick={excelAjson}
                   disabled={disableDrawButton || currentItems.length <= 1}
                 >
                   {disableDrawButton ? 'Drawing...' : 'Draw'}
                 </Button>
-                <input
-                  id="exportButton"
+                <Button
+                  pill
+                  name="exportButton"
                   color="primary" 
                   type="file"
                   accept=".xls, .xlsx"
-                  onClick={excelAjson}
-                /> 
+                >     
+                </Button>
               </Grid.Col>
               <Grid.Col md={4} sm={12}>
                 <PreviouslyDrawnItemsBlock pastDrawnItems={pastDrawnItems} />

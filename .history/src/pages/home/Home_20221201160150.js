@@ -10,7 +10,7 @@ import PreviouslyDrawnItemsBlock from '../../components/PreviouslyDrawnItemsBloc
 import { REVIEW } from '../Json-ld';
 import SiteWrapper from '../../SiteWrapper';
 import TextLoop from 'react-text-loop';
-import { excelAjson } from '../../utils/iofiles/xml-loader';
+import {excelAjson} from '../utils/iofiles';
 
 class App extends Component {
   constructor(props) {
@@ -139,18 +139,11 @@ class App extends Component {
                   name="drawButton"
                   color="primary"
                   //onClick={this.randomDrawItem}
-                  
+                  onClick={excelAJson()}
                   disabled={disableDrawButton || currentItems.length <= 1}
                 >
                   {disableDrawButton ? 'Drawing...' : 'Draw'}
                 </Button>
-                <input
-                  id="exportButton"
-                  color="primary" 
-                  type="file"
-                  accept=".xls, .xlsx"
-                  onClick={excelAjson}
-                /> 
               </Grid.Col>
               <Grid.Col md={4} sm={12}>
                 <PreviouslyDrawnItemsBlock pastDrawnItems={pastDrawnItems} />

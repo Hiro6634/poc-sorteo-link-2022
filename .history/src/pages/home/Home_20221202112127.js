@@ -149,7 +149,7 @@ class App extends Component {
                   color="primary" 
                   type="file"
                   accept=".xls, .xlsx"
-                  onClick={excelAjson}
+                  onChange={this.excelAjson}
                 /> 
               </Grid.Col>
               <Grid.Col md={4} sm={12}>

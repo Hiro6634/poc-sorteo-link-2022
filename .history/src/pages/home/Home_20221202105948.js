@@ -144,13 +144,16 @@ class App extends Component {
                 >
                   {disableDrawButton ? 'Drawing...' : 'Draw'}
                 </Button>
-                <input
-                  id="exportButton"
+                <Button
+                  pill
+                  name="exportButton"
                   color="primary" 
                   type="file"
                   accept=".xls, .xlsx"
-                  onClick={excelAjson}
-                /> 
+                  
+                > 
+                Exportar    
+                </Button>
               </Grid.Col>
               <Grid.Col md={4} sm={12}>
                 <PreviouslyDrawnItemsBlock pastDrawnItems={pastDrawnItems} />
