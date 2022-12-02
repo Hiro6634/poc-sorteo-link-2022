@@ -25,7 +25,7 @@ const Administration = () => {
                 <Raffles/>
             </div>
             <button onClick={handleButton}>BOTON</button>
-            <button onClick={() =>SaveWinners(winners)}>Cargar Ganadores</button>
+            <button onClick={SaveWinners(winners)}>Cargar Ganadores</button>
 
         </div>
     );

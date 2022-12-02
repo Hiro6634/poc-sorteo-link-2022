@@ -5,13 +5,12 @@ import { EmployeeContext } from '../../context/employees.context';
 
 import EMPLOYEES from '../../context/employees.json';
 
-import { SaveWinners } from '../../utils/save-winners';
-import { WinnerContext } from '../../context/winners.context';
+import { saveWinners } from '../../utils/save-winners';
 
 
 const Administration = () => {
     const {loadEmployees, employees} = useContext(EmployeeContext);
-    const {winners} = useContext(WinnerContext);
+
     const handleButton = () => {
         console.log(employees);
         loadEmployees(EMPLOYEES);
@@ -25,7 +24,7 @@ const Administration = () => {
                 <Raffles/>
             </div>
             <button onClick={handleButton}>BOTON</button>
-            <button onClick={() =>SaveWinners(winners)}>Cargar Ganadores</button>
+            <button onClick={saveWinners}>Cargar Ganadores</button>
 
         </div>
     );
