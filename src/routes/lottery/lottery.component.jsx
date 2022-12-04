@@ -1,8 +1,8 @@
 import NamesLoop from '../../components/namesloop/namesloop.component';
 
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { WinnerContext } from '../../context/winners.context';
-
+import { RaffleContext } from '../../context/raffles.context';
 
 import { 
     LotteryContainer,
@@ -11,7 +11,15 @@ import {
 
 const Lottery = () => {
     const {winners} = useContext(WinnerContext);
-    console.log("Winners:" + winners.length);
+    const {running, setRunning, raffles} = useContext(RaffleContext);
+
+    // const timerId = setTimeout(()=>{
+    //     fetchRunning();
+    //     clearTimeout(timerId)
+    // },1000);
+
+    console.log("Running:" + raffles.running);
+
     return(
         <div>
             <Title>SORTEO LINK</Title>

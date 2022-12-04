@@ -7,7 +7,7 @@ import EMPLOYEES from '../../context/employees.json';
 
 const Administration = () => {
     const {loadEmployees, employees} = useContext(EmployeeContext);
-
+    
     const handleButton = () => {
         console.log(employees);
         loadEmployees(EMPLOYEES);
