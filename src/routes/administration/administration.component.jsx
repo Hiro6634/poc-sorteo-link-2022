@@ -2,8 +2,14 @@ import Raffles from '../../components/raffles/raffles.component';
 
 import { useContext } from 'react';
 import { EmployeeContext } from '../../context/employees.context';
+import Button from '../../components/button/button.component';
 
 import EMPLOYEES from '../../context/employees.json';
+
+import { 
+    AdministratorContainer, 
+    LoadingButtonContainer
+} from './administration.styles';
 
 const Administration = () => {
     const {loadEmployees, employees} = useContext(EmployeeContext);
@@ -15,13 +21,14 @@ const Administration = () => {
     }
 
     return(
-        <div>
-            <h1>SORTEOS</h1>
+        <AdministratorContainer>
+            <LoadingButtonContainer>
+                <Button>CARGAR PARTICIPANTES</Button>            
+            </LoadingButtonContainer>
             <div>
                 <Raffles/>
             </div>
-            <button onClick={handleButton}>BOTON</button>
-        </div>
+        </AdministratorContainer>
     );
 
 
