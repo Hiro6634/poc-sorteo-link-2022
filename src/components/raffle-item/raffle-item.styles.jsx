@@ -11,6 +11,6 @@ export const RaffleItemContainer = styled.div`
 
 export const ItemButton = styled(Link)`
     width:auto;
-    background-color: black;
+    background-color: ${props => props.enable?"black":"grey"};
     color: white;
 `;

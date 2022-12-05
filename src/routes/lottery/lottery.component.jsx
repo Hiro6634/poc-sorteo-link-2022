@@ -13,6 +13,7 @@ const Lottery = () => {
     const {winners} = useContext(WinnerContext);
     const {running, setRunning, raffles} = useContext(RaffleContext);
 
+    
     // const timerId = setTimeout(()=>{
     //     fetchRunning();
     //     clearTimeout(timerId)

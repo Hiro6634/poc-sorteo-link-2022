@@ -17,7 +17,8 @@ import { WinnerContext } from '../../context/winners.context';
 const Administration = () => {
     const {loadEmployees, employees} = useContext(EmployeeContext);
     const {winners} = useContext(WinnerContext);
-    const handleButton = () => {
+    const handleEmployees = () => {
+        //TODO: Aca cargamos los datos de EXCELL y el json obtenido lo pasamos al loadEmployees
         loadEmployees(EMPLOYEES);
     }
 
@@ -28,7 +29,7 @@ const Administration = () => {
     return(
         <AdministratorContainer>
             <LoadingButtonContainer>
-                <Button onClick={handleButton}>CARGAR PARTICIPANTES</Button> 
+                <Button onClick={handleEmployees}>CARGAR PARTICIPANTES</Button> 
            
             </LoadingButtonContainer>
             <LoadingButtonContainer>
