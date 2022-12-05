@@ -9,7 +9,6 @@ export const AdministratorContainer = styled.div`
 `;
 
 export const LoadingButtonContainer = styled.div`
-    display: flex;
-    flex-direction: column;
+    display: row;
     padding-bottom: 20px;
 `;

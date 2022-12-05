@@ -10,9 +10,14 @@ import {
     AdministratorContainer, 
     LoadingButtonContainer
 } from './administration.styles';
+export default Administration;
 
+const Administration = () => {
+    const {loadEmployees, employees} = useContext(EmployeeContext);
+    
 import { SaveWinners } from '../../utils/save-winners';
 import { WinnerContext } from '../../context/winners.context';
+
 
 const Administration = () => {
     const {loadEmployees, employees} = useContext(EmployeeContext);
@@ -29,9 +34,6 @@ const Administration = () => {
         <AdministratorContainer>
             <LoadingButtonContainer>
                 <Button onClick={handleButton}>CARGAR PARTICIPANTES</Button> 
-           
-            </LoadingButtonContainer>
-            <LoadingButtonContainer>
                 <Button onClick={handleWinners}>DESCARGAR GANADORES</Button>            
            
             </LoadingButtonContainer>
@@ -45,4 +47,3 @@ const Administration = () => {
 }
 
 
-export default Administration;

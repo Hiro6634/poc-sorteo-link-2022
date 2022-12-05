@@ -29,9 +29,6 @@ const Administration = () => {
         <AdministratorContainer>
             <LoadingButtonContainer>
                 <Button onClick={handleButton}>CARGAR PARTICIPANTES</Button> 
-           
-            </LoadingButtonContainer>
-            <LoadingButtonContainer>
                 <Button onClick={handleWinners}>DESCARGAR GANADORES</Button>            
            
             </LoadingButtonContainer>
