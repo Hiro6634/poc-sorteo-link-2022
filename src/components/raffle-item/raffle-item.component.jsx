@@ -8,17 +8,16 @@ import {
 } from './raffle-item.styles';
 
 const RaffleItem = ({id, reward, maxWinners, state}) => {
-    const { running, setRunning} = useContext(RaffleContext);
+    const { running, setRunning, setLoadingValue} = useContext(RaffleContext);
 
     console.log("RUNNING:" + running.running);
 
     const handleLaunchButton = () => {
         if (state === "PENDIENTE" )
         { 
-            const value = !running.running;
-            setRunning({running: value})
-            console.log("REDIRECT");
-            redirect("/lottery");
+            console.log("SET RUNNING");
+            setRunning({running: true});
+            setLoadingValue(true);
         }
     }
     return(
@@ -38,7 +37,7 @@ const RaffleItem = ({id, reward, maxWinners, state}) => {
                     :
                     console.log("")
                 } }
-                to={(state==="PENDIENTE" && running.running )?'/lottery':''}
+                to={(state==="PENDIENTE" )?'/lottery':''}
                 >
                     LANZAR SORTEO
                 </ItemButton>
