@@ -15,15 +15,13 @@ const Administration = () => {
     const {loadEmployees, employees} = useContext(EmployeeContext);
     
     const handleButton = () => {
-        console.log(employees);
         loadEmployees(EMPLOYEES);
-        console.log(employees);
     }
 
     return(
         <AdministratorContainer>
             <LoadingButtonContainer>
-                <Button>CARGAR PARTICIPANTES</Button>            
+                <Button onClick={handleButton}>CARGAR PARTICIPANTES</Button>            
             </LoadingButtonContainer>
             <div>
                 <Raffles/>
