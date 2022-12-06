@@ -46,7 +46,7 @@ const Administration = () => {
     }
 
     const handleWinner = () => {
-        GetWinner(employees,removeEmployeeByIndex,getEmployeeByIndex);
+        GetWinner(winners);
     }
 
     const handleTest = () => {
