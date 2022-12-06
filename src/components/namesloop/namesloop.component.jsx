@@ -15,7 +15,7 @@ const NamesLoop = () => {
     console.log("Employees:", employees.length);
     return(
         <NameLoopContainer>
-            <TextLoop interval={300}>
+            <TextLoop interval={200}>
                 {
                     employees.length ? (employees.map((employee)=>(
                     <span id={employee.id}>{employee.lastName}, {employee.firstName}</span>

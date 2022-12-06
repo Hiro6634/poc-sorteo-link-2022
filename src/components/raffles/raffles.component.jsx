@@ -7,7 +7,13 @@ import { RaffleContext } from '../../context/raffles.context';
 import { 
     RafflesContainer,
     RafflesItems,
-    RafflesTitle
+    RafflesTitle,
+    RaffleHdrTableContainer,
+    IdHdrContainer,
+    RewardHdrContainer,
+    WinnersHdrContainer,
+    StatusHdrContainer,
+    PauseHdrContainer
 } from './raffles.styles';
 
 const Raffles = () => {
@@ -16,9 +22,16 @@ const Raffles = () => {
     return(
         <RafflesContainer>
             <RafflesTitle>SORTEOS</RafflesTitle>
+            <RaffleHdrTableContainer>
+                <IdHdrContainer>ID</IdHdrContainer>
+                <RewardHdrContainer>Premio</RewardHdrContainer>
+                <WinnersHdrContainer>Ganadores</WinnersHdrContainer>
+                <StatusHdrContainer>Estado</StatusHdrContainer>
+                <PauseHdrContainer>Pausa</PauseHdrContainer>
+            </RaffleHdrTableContainer>
             <RafflesItems>
             {
-                raffles.map(raffle=>(<RaffleItem key={raffle.id} id={raffle.id} reward={raffle.premio} maxWinners={raffle.ganadores} state={raffle.estado}/>))
+                raffles.map(raffle=>(<RaffleItem key={raffle.id} raffle={raffle}/>))
             }            
             </RafflesItems>
         </RafflesContainer>
