@@ -13,18 +13,6 @@ export const WinnersProvider = ({children}) => {
             apellido: "Perez",
             sorteo: 1,
             premio: "15mil",
-            lista: [
-                "Rodriguez, Marisa ",
-                "Suarez, Aldo",
-                "Taboada, Alejandra",
-                "Fernandez, Mariano",
-                "Iodi, Jonathan",
-                "Buceta, Diego",
-                "Muñiz, Sebastian",
-                "Canal, Carlos",
-                "Trinidad, Pablo",
-                "Tore, Aldo"
-            ]
         },
         {
             id: 111,
@@ -32,21 +20,18 @@ export const WinnersProvider = ({children}) => {
             apellido: "Alvarez",
             sorteo: 5,
             premio: "40mil",
-            lista: [
-                "Mirabellis, Ferando",
-                "Gracia, Pablo",
-                "Pippolo, Laura",
-                "Sandrini, Martha",
-                "Sosa, Cristian",
-                "Milei, Vanesa",
-                "Scarso, Irene",
-                "Carabajal, Mariano",
-                "Benitez, Angel",
-                "Iglesias, Sergio"
-            ]
         }
     ]);
-    const value = {winners};
+
+    const addWinner = (winner) => {
+        console.log("WINNER:", winner);
+        console.log("WINNERS:", winners);
+        setWinners(winner);
+        console.log("POS WINNERS:", winners);
+
+    }
+
+    const value = {winners, addWinner};
 
     return(
         <WinnerContext.Provider value={value}>{children}</WinnerContext.Provider>

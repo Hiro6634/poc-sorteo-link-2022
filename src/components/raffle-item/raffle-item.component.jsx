@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { redirect } from 'react-router-dom';
 import { RaffleContext } from '../../context/raffles.context';
+import { WinnerContext, WinnersProvider } from '../../context/winners.context';
 
 import { 
     RaffleItemContainer,
@@ -9,6 +9,7 @@ import {
 
 const RaffleItem = ({id, reward, maxWinners, state}) => {
     const { running, setRunning, setLoadingValue} = useContext(RaffleContext);
+    // const { winners, addWinner} = useContext(WinnerContext);
 
     console.log("RUNNING:" + running.running);
 
@@ -16,7 +17,8 @@ const RaffleItem = ({id, reward, maxWinners, state}) => {
         console.log("SET RUNNING");
         setRunning({running: true});
         setLoadingValue(true);
-    }
+    };
+
     return(
         <RaffleItemContainer>
             <span>{id}</span>

@@ -15,7 +15,13 @@ import { SaveWinners } from '../../utils/save-winners';
 import { WinnerContext } from '../../context/winners.context';
 
 const Administration = () => {
-    const {loadEmployees, employees} = useContext(EmployeeContext);
+    const {
+        loadEmployees, 
+        employees, 
+        getEmployeeByIndex,
+        removeEmployeeByIndex,
+        selectPreviousEmployeesbyIndex
+    } = useContext(EmployeeContext);
     const {winners} = useContext(WinnerContext);
     const { running, setRunning } = useContext( RaffleContext);
 
@@ -38,6 +44,20 @@ const Administration = () => {
         SaveWinners(winners);
     }
 
+    const handleTest = () => {
+        // const employee = getEmployeeByIndex(2);
+        // console.log("EMPLOYEE[2]", employee);
+
+
+        console.log("EMPLOYEES:", employees);
+        // removeEmployeeByIndex(3);
+        // console.log("EMPLOYEES:", employees);
+
+        const preWinners = selectPreviousEmployeesbyIndex(5,3);
+        console.log("PRE WINNERS:", preWinners);
+
+    }
+
     return(
         <AdministratorContainer>
             <LoadingButtonContainer>
@@ -51,6 +71,8 @@ const Administration = () => {
             <div>
                 <Raffles/>
             </div>
+
+            <Button onClick={handleTest}>TEST</Button>
         </AdministratorContainer>
     );
 

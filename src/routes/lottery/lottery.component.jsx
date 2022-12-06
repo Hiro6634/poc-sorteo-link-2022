@@ -51,7 +51,9 @@ const Lottery = ({award}) => {
 );
 
     return(
-        isLoading?(<div><img src={lotteryMask} alt='Mascara'></img></div>) :
+        isLoading?
+        (<div><img src={lotteryMask} alt='Mascara'></img></div>
+        ) :
         (lotteryPage)
         );
     
