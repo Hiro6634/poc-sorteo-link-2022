@@ -3,14 +3,17 @@ import styled from 'styled-components';
 
 export const NameLoopContainer = styled.div`
     display:flex;
+    flex-direction: column;
+    justify-content: center;
     width: 600px;
-    height:250px;
-    border: 1px solid red;
+    height:150px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 20px;
-    margin: 15px;
     font-size: 28px;
     font-weight: bold;
-    border: 1px grey solid;
+    border: 3px grey solid;
+    border-radius: 15px;
     color: blue;
     text-align: center;
     background-color: white ;

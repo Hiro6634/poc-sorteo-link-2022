@@ -3,15 +3,17 @@ import NamesLoop from '../../components/namesloop/namesloop.component';
 import { useContext, useEffect } from 'react';
 import { WinnerContext } from '../../context/winners.context';
 import { RaffleContext } from '../../context/raffles.context';
-
+import WinnersView from '../../components/winners-view/winners-view.component';
 import lotteryMask from '../../assets/MascaraSorteo.png';
 
 import { 
     LotteryContainer,
-    Title 
+    Title,
+    RaffleTitle,
+    RaffleContainer
 } from './lottery.styles';
 
-const Lottery = () => {
+const Lottery = ({award}) => {
     const {winners} = useContext(WinnerContext);
     const {running, setRunning, isLoading, setLoadingValue, raffles} = useContext(RaffleContext);
     var starting = true;
@@ -34,24 +36,18 @@ const Lottery = () => {
     console.log("Running:" + running.running);
 
     const lotteryPage = (        
-    <div>
-        <Title>SORTEO LINK</Title>
-        <LotteryContainer>
+    <LotteryContainer>
+        <Title>
+            <h1>
+                SORTEO Fiesta LINK 2022
+            </h1>
+        </Title>
+        <RaffleContainer>
+            <RaffleTitle><h2>SORTEO: GifCard por 15mil pesos</h2></RaffleTitle>
             <NamesLoop/>
-        </LotteryContainer>
-        <div style={{color: "black"}}>
-        {
-            winners.length ? (winners.map(winner=>(
-                <div key={winner.id}>
-                    <span>{winner.nombre}</span>
-                    | 
-                    <span>{winner.apellido}</span>
-                    | 
-                    <span>{winner.premio}</span>
-                </div>))) : (<span>No Winner yet</span>)
-        }
-    </div>
-</div>
+        </RaffleContainer>
+        <WinnersView/>
+    </LotteryContainer>
 );
 
     return(

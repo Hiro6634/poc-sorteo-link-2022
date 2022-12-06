@@ -13,12 +13,9 @@ const RaffleItem = ({id, reward, maxWinners, state}) => {
     console.log("RUNNING:" + running.running);
 
     const handleLaunchButton = () => {
-        if (state === "PENDIENTE" )
-        { 
-            console.log("SET RUNNING");
-            setRunning({running: true});
-            setLoadingValue(true);
-        }
+        console.log("SET RUNNING");
+        setRunning({running: true});
+        setLoadingValue(true);
     }
     return(
         <RaffleItemContainer>
@@ -41,7 +38,6 @@ const RaffleItem = ({id, reward, maxWinners, state}) => {
                 >
                     LANZAR SORTEO
                 </ItemButton>
-
         </RaffleItemContainer>
     );
 }
