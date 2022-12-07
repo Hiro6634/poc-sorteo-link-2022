@@ -1,11 +1,12 @@
 body {
   width: 99%;
   height: 100%;
-  /* background-image: url('./assets/LinkBackground2022.png'); */
+  background-image: url('./assets/PantallasSORTEOS.jpg');
+  background-size: cover;
   background-position: 0 0;
   background-size: cover;
-}
-a {
+
+}a {
   text-decoration: none;
   color: black;
 }

@@ -57,22 +57,11 @@ const Lottery = ({award}) => {
 
         console.log("BYE:", raffles);
     }
-    console.log("Running:" + running.running);
-
-    const lotteryPage = (        
-    <LotteryContainer>
-        <RaffleContainer>
-            <h1></h1>
-            <NamesLoop/>
-        </RaffleContainer>
-    </LotteryContainer>
-);
 
     return(
-        isLoading?(
-            <RaffleStaticImage img={lotteryMask}></RaffleStaticImage>
-        ) :
-        (<LotteryView/>)
+        <LotteryContainer>
+            <LotteryView/>
+        </LotteryContainer>
         );
     
 }
