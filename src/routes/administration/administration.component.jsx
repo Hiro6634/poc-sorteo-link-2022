@@ -3,6 +3,8 @@ import { useContext, useEffect } from 'react';
 import { RaffleContext } from '../../context/raffles.context'; 
 import { EmployeeContext } from '../../context/employees.context';
 import Button from '../../components/button/button.component';
+import { RaffleStates } from '../../context/raffles.context';
+import { Sleep } from '../../utils/utils';
 
 import EMPLOYEES from '../../context/employees.json';
 
@@ -23,7 +25,13 @@ const Administration = () => {
         selectPreviousEmployeesbyIndex
     } = useContext(EmployeeContext);
     const {winners} = useContext(WinnerContext);
-    const { running, setRunning } = useContext( RaffleContext);
+    const { 
+        running, 
+        setRunning,
+        raffles,
+        getNextRaffle,
+        setRaffleState
+    } = useContext( RaffleContext);
 
     useEffect(()=>{
         console.log("ADMIN PAGE RUNNING:" + running.running);
@@ -44,19 +52,35 @@ const Administration = () => {
         SaveWinners(winners);
     }
 
-    const handleTest = () => {
+    const handleTest = async () => {
         // const employee = getEmployeeByIndex(2);
         // console.log("EMPLOYEE[2]", employee);
 
 
-        console.log("EMPLOYEES:", employees);
+        // console.log("EMPLOYEES:", employees);
         // removeEmployeeByIndex(3);
         // console.log("EMPLOYEES:", employees);
 
-        const preWinners = selectPreviousEmployeesbyIndex(5,3);
-        console.log("PRE WINNERS:", preWinners);
+        // const preWinners = selectPreviousEmployeesbyIndex(5,3);
+        // console.log("PRE WINNERS:", preWinners);
+        let raffle = getNextRaffle();
+        console.log("RAFFLE:", raffle);
 
-    }
+        while( raffle !== undefined ){
+            setRaffleState(raffle, RaffleStates.ENPROGRESO);
+            console.log("PRE");
+            await Sleep(raffle.tiempos.pre*1000)
+            console.log("SORTEO");
+            await Sleep(raffle.tiempos.duracion*1000);
+            console.log("FIN DEL SORTEO");
+            setRaffleState(raffle, RaffleStates.SORTEADO);
+            
+            raffle = getNextRaffle();
+            console.log("RAFFLE:", raffle);
+        }
+
+        console.log("BYE:", raffles);
+    }   
 
     return(
         <AdministratorContainer>

@@ -3,42 +3,60 @@
         "id": 1,
         "premio":"15mil pesos",
         "ganadores":9,
-        "estado":"SORTEADO",
-        "pausa":30
+        "estado":"PENDIENTE",
+        "tiempos":{
+            "pre": 5,
+            "duracion": 10
+        }
     },
     {
         "id": 2,
         "premio":"15mil pesos",
         "ganadores":9,
         "estado":"PENDIENTE",
-        "pausa":30
+        "tiempos":{
+            "pre": 5,
+            "duracion": 10
+        }
     },
     {
         "id": 3,
         "premio":"15mil pesos",
         "ganadores":9,
         "estado":"PENDIENTE",
-        "pausa":30
+        "tiempos":{
+            "pre": 5,
+            "duracion": 10
+        }
     },
     {
         "id": 4,
         "premio":"30mil pesos",
         "ganadores":4,
         "estado":"PENDIENTE",
-        "pausa":30
+        "tiempos":{
+            "pre": 5,
+            "duracion": 10
+        }
     },
     {
         "id": 5,
         "premio":"60mil pesos",
         "ganadores":2,
         "estado":"PENDIENTE",
-        "pausa":30
+        "tiempos":{
+            "pre": 5,
+            "duracion": 10
+        }
     },
     {
         "id": 6,
         "premio":"80mil pesos",
         "ganadores":1,
         "estado":"PENDIENTE",
-        "pausa":30
+        "tiempos":{
+            "pre": 5,
+            "duracion": 10
+        }
     }
 ]
