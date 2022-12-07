@@ -3,8 +3,11 @@ import NamesLoop from '../../components/namesloop/namesloop.component';
 import { useContext, useEffect } from 'react';
 import { WinnerContext } from '../../context/winners.context';
 import { RaffleContext } from '../../context/raffles.context';
-import WinnersView from '../../components/winners-view/winners-view.component';
+import LotteryView from '../../components/lottery-view/lottery-view.component';
+
 import lotteryMask from '../../assets/MascaraSorteo.png';
+import { Sleep } from '../../utils/utils';
+import { RaffleStates } from '../../context/raffles.context';
 
 import { 
     LotteryContainer,
@@ -15,7 +18,15 @@ import {
 
 const Lottery = ({award}) => {
     const {winners} = useContext(WinnerContext);
-    const {running, setRunning, isLoading, setLoadingValue, raffles} = useContext(RaffleContext);
+    const {
+        running, 
+        setRunning, 
+        isLoading, 
+        setLoadingValue, 
+        raffles,
+        getNextRaffle,
+        setRaffleState
+    } = useContext(RaffleContext);
     var starting = true;
 
     function sleep(time){
@@ -23,16 +34,28 @@ const Lottery = ({award}) => {
     }
 
     useEffect(() => { 
-        const fetchData = async () => {
-            await sleep(5000);
-            console.log("Time Out!");
-            setLoadingValue(false);
-        }
-
-        fetchData()
-        .catch(console.error);
+        ruffleProcess();
     },[]);
 
+    const ruffleProcess = async () => {
+        let raffle = getNextRaffle();
+        console.log("RAFFLE:", raffle);
+
+        while( raffle !== undefined ){
+            setRaffleState(raffle, RaffleStates.ENPROGRESO);
+            console.log("PRE");
+            await Sleep(raffle.tiempos.pre*1000)
+            console.log("SORTEO");
+            await Sleep(raffle.tiempos.duracion*1000);
+            console.log("FIN DEL SORTEO");
+            setRaffleState(raffle, RaffleStates.SORTEADO);
+            
+            raffle = getNextRaffle();
+            console.log("RAFFLE:", raffle);
+        }
+
+        console.log("BYE:", raffles);
+    }
     console.log("Running:" + running.running);
 
     const lotteryPage = (        
@@ -48,7 +71,7 @@ const Lottery = ({award}) => {
         isLoading?
         (<div><img src={lotteryMask} alt='Mascara'></img></div>
         ) :
-        (lotteryPage)
+        (<LotteryView/>)
         );
     
 }

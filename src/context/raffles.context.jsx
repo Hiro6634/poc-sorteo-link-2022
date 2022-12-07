@@ -1,6 +1,13 @@
 import { createContext, useState } from 'react';
 
 import RAFFLES from './raffles.json';
+
+export const RaffleStates = {
+    PENDIENTE: 'PENDIENTE',
+    ENPROGRESO: 'ENPROGRESO',
+    SORTEADO: 'SORTEADO'
+};
+
 export const RaffleContext = createContext({
     isLoading: true,
     running: false, 
@@ -14,8 +21,21 @@ export const RafflesProvider = ({children}) => {
 
     const setLoadingValue = (value) => setIsLoading(value);
 
+    const getNextRaffle = () => {
+        return raffles.find((value, index, array)=>{
+            return value.estado === RaffleStates.PENDIENTE;
+        });
+    }
+
+    const setRaffleState = (raffle, state) => {
+        const index = raffles.indexOf(raffle);
+        raffles[index].estado = state;
+    }
+
     const value = { 
         raffles,
+        getNextRaffle,
+        setRaffleState,
         running,
         setRunning,
         isLoading,
