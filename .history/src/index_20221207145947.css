@@ -1,0 +1,17 @@
+body {
+  width: 200px;
+  height: 200px;
+  background-image: url('./assets/PantallasSORTEOS.jpg');
+  background-position: 0 0;
+  background-size: cover;
+  position: fixed;
+
+
+}a {
+  text-decoration: none;
+  color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
