@@ -1,9 +1,11 @@
 import WinnersView from '../winners-view/winners-view.component';
 import NamesLoop from '../namesloop/namesloop.component';
+import tituloPremio from '../../assets/PantallasPremios-15mil.jpg'
 
 import { 
     LotteryContainer,
     RewardContainer,
+    RewardImgContainer,
     NamesLoopContainer,
     WinnersContainer 
 } from './lottery-view.styles';
@@ -13,7 +15,7 @@ const LotteryView = (props) => {
     return(
         <LotteryContainer>
             <RewardContainer>
-                <img src="" alt="imagen del sorteo"/>
+                <RewardImgContainer src={tituloPremio} alt="imagen del sorteo"/>
             </RewardContainer>
             <NamesLoopContainer>
                 <NamesLoop/>

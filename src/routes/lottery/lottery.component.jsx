@@ -9,6 +9,8 @@ import lotteryMask from '../../assets/MascaraSorteo.png';
 import { Sleep } from '../../utils/utils';
 import { RaffleStates } from '../../context/raffles.context';
 
+import { RaffleProcess } from '../../business/raffle-process';
+
 import { 
     LotteryContainer,
     Title,
@@ -47,6 +49,7 @@ const Lottery = ({award}) => {
             console.log("PRE");
             await Sleep(raffle.tiempos.pre*1000)
             console.log("SORTEO");
+            RaffleProcess(raffle);
             await Sleep(raffle.tiempos.duracion*1000);
             console.log("FIN DEL SORTEO");
             setRaffleState(raffle, RaffleStates.SORTEADO);
