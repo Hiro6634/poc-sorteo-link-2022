@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import img from '../../assets/PantallasPremio_Fija.jpg'
 export const LotteryContainer = styled.div`
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100% ;
+    width: auto;
 `;
 
 export const Title = styled.div`
@@ -12,10 +9,10 @@ export const Title = styled.div`
 `;
 
 export const RaffleContainer = styled.div`
-    display:flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
     width: 100% ;
+    margin-top:15%;
+    left: -20px;
 `;
 
 export const RaffleTitle = styled.div`

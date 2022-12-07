@@ -1,17 +1,9 @@
 body {
-  width: 100%;
+  width: 99%;
   height: 100%;
-<<<<<<< Updated upstream
   /* background-image: url('./assets/LinkBackground2022.png'); */
   background-position: 0 0;
   background-size: cover;
-  z-index: -1;
-=======
-  /* background-image: url('./assets/PantallasSORTEOS.jpg'); 
-  background-repeat: no-repeat; 
-  background-size: cover; */
-  z-index: -1; 
->>>>>>> Stashed changes
 }
 a {
   text-decoration: none;

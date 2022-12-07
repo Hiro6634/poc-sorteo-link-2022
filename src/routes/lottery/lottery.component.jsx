@@ -40,16 +40,10 @@ const Lottery = ({award}) => {
 
     const lotteryPage = (        
     <LotteryContainer>
-        <Title>
-            <h1>
-                SORTEO Fiesta LINK 2022
-            </h1>
-        </Title>
         <RaffleContainer>
-            <RaffleTitle><h2>SORTEO: GifCard por 15mil pesos</h2></RaffleTitle>
+            <h1></h1>
             <NamesLoop/>
         </RaffleContainer>
-        <WinnersView/>
     </LotteryContainer>
 );
 
