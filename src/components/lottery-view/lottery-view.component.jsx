@@ -6,7 +6,6 @@ import tituloPremio from '../../assets/PantallasPremios-15mil.jpg'
 import { 
     LotteryContainer,
     RewardContainer,
-    RewardImgContainer,
     NamesLoopContainer,
     WinnersContainer,
     RewardImgContainer 

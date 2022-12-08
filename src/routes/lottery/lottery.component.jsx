@@ -1,11 +1,10 @@
 import NamesLoop from '../../components/namesloop/namesloop.component';
 
 import { useContext, useEffect } from 'react';
-import { WinnerContext } from '../../context/winners.context';
 import { RaffleContext } from '../../context/raffles.context';
 import LotteryView from '../../components/lottery-view/lottery-view.component';
 
-import lotteryMask from '../../assets/MascaraSorteo.png';
+// import lotteryMask from '../../assets/MascaraSorteo.png';
 import { Sleep } from '../../utils/utils';
 import { RaffleStates } from '../../context/raffles.context';
 
@@ -13,28 +12,14 @@ import { RaffleProcess } from '../../business/raffle-process';
 
 import { 
     LotteryContainer,
-    Title,
-    RaffleTitle,
-    RaffleContainer,
-    RaffleStaticImage
 } from './lottery.styles';
 
-const Lottery = ({award}) => {
-    const {winners} = useContext(WinnerContext);
+const Lottery = () => {
     const {
-        running, 
-        setRunning, 
-        isLoading, 
-        setLoadingValue, 
         raffles,
         getNextRaffle,
         setRaffleState
     } = useContext(RaffleContext);
-    var starting = true;
-
-    function sleep(time){
-        return new Promise((resolve)=>setTimeout(resolve,time))
-    }
 
     useEffect(() => { 
         ruffleProcess();
