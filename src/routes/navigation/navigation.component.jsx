@@ -12,6 +12,7 @@ const Navigation = () => {
             <NavigationContainer>
                 <NavLink to = '/'>ADMIN</NavLink>
                 <NavLink to = '/lottery'>SORTEO</NavLink>
+                <NavLink to = '/test'>TEST</NavLink>
             </NavigationContainer>
             <Outlet/>
         </Fragment>

@@ -6,16 +6,23 @@ import { RaffleStates } from '../context/raffles.context';
 import { Sleep } from '../utils/utils';
 import { PauseContainer } from '../components/raffle-item/raffle-item.styles';
 
-
 export const RunRaffleProcess = async (apiRaffleContext, apiWinnerContext, apiEmployeeContext) => {
-    const { setRaffleState, getNextRaffle} = apiRaffleContext;
-    let raffle = getNextRaffle();
+    const { 
+        setRaffleState, 
+        getNextRaffle,
+        setCurrentRaffle
+    } = apiRaffleContext;
 
+    const { setWinnersColumns } = apiWinnerContext;
+    
+    let raffle = getNextRaffle();
+    console.log("START");
     while( raffle !== undefined ){
         setRaffleState(raffle, RaffleStates.ENPROGRESO);
-
+        setCurrentRaffle(raffle);
+        setWinnersColumns(raffle.columnas);
         await Sleep(raffle.tiempos.pre*1000)
-
+        console.log("SORTEO!w");
         RaffleProcess( raffle, apiWinnerContext, apiEmployeeContext );
 
         setRaffleState(raffle, RaffleStates.SORTEADO);
@@ -32,10 +39,12 @@ export const RaffleProcess = async (raffle, apiWinnerContext, apiEmployeeContext
     for( let ix=0; ix < raffle.ganadores; ix++){
         await Sleep(raffleTime);
         const win = GetWinner(apiEmployeeContext);
+        // console.log("THE WINNER IS:", win);
         const winner = {
             id: win.id,
-            nombre: win.firstName,
-            apellido: win.lastName,
+            legajo: win.id,
+            nombre: win.Nombre,
+            apellido: win.Apellido,
             sorteo: raffle.id,
             premio: raffle.premio,
         };

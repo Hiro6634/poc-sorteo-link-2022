@@ -1,52 +1,52 @@
 [
     { 
         "id": 1967,
-        "lastName": "GETTE",
-        "firstName": "EVELYN DESIREE"
+        "Apellido": "GETTE",
+        "Nombre": "EVELYN DESIREE"
     },
     { 
         "id": 1968,
-        "lastName": "PERASSO",
-        "firstName": "GERARDO MARTIN"
+        "Apellido": "PERASSO",
+        "Nombre": "GERARDO MARTIN"
     },
     { 
         "id": 1969,
-        "lastName": "SEGOVIA",
-        "firstName": "NOELIA FERNANDA"
+        "Apellido": "SEGOVIA",
+        "Nombre": "NOELIA FERNANDA"
     },
     { 
         "id": 1971,
-        "lastName": "LOPEZ",
-        "firstName": "ARIEL DARIO"
+        "Apellido": "LOPEZ",
+        "Nombre": "ARIEL DARIO"
     },
     { 
         "id": 1972,
-        "lastName": "RUEDA",
-        "firstName": "SANTIAGO"
+        "Apellido": "RUEDA",
+        "Nombre": "SANTIAGO"
     },
     { 
         "id": 1975,
-        "lastName": "NIELSEN",
-        "firstName": "HERNAN EZEQUIEL"
+        "Apellido": "NIELSEN",
+        "Nombre": "HERNAN EZEQUIEL"
     },
     { 
         "id": 1977,
-        "lastName": "SOLDATI",
-        "firstName": "MARIA LAURA"
+        "Apellido": "SOLDATI",
+        "Nombre": "MARIA LAURA"
     },
     { 
         "id": 1978,
-        "lastName": "MORALES",
-        "firstName": "CAROLINA"
+        "Apellido": "MORALES",
+        "Nombre": "CAROLINA"
     },
     {
         "id": 1981,
-        "lastName":"ALVAREZ PRIETO",
-        "firstName":"RODRIGO"
+        "Apellido":"ALVAREZ PRIETO",
+        "Nombre":"RODRIGO"
     },
     {   
         "id": 1982,	
-        "lastName":"CARABALLO ZAMORA",
-        "firstName":"LISMAR DAYANA"
+        "Apellido":"CARABALLO ZAMORA",
+        "Nombre":"LISMAR DAYANA"
     }
 ]

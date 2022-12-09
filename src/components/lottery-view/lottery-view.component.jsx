@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+import { WinnerContext } from '../../context/winners.context';
+
 import WinnersView from '../winners-view/winners-view.component';
 import NamesLoop from '../namesloop/namesloop.component';
 import tituloPremio from '../../assets/PantallasPremios-15mil.jpg'
@@ -12,6 +15,7 @@ import {
 } from './lottery-view.styles';
 
 const LotteryView = (props) => {
+    const { winColumns} = useContext(WinnerContext);
     const {img} = props;
     return(
         <LotteryContainer>

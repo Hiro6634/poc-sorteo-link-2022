@@ -11,14 +11,12 @@ import {
 const NamesLoop = () => {
     const {employees} = useContext(EmployeeContext);
 
-    console.log("Employees:", employees);
-    console.log("Employees:", employees.length);
     return(
         <NameLoopContainer>
             <TextLoop interval={200}>
                 {
                     employees.length ? (employees.map((employee)=>(
-                    <span id={employee.id}>{employee.lastName}, {employee.firstName}</span>
+                    <span key={employee.id}>{employee.Apellido}, {employee.Nombre}</span>
     ))): (null)}
             </TextLoop>
         </NameLoopContainer>

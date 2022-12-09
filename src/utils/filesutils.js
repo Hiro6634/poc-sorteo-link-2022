@@ -18,6 +18,7 @@ export const excelAjson = async (inputFile) => {
     let result = null;
     try{
         const data = await readExcelAsync(inputFile);
+        console.log("DATA READY!");
         const workbook = xlsx.read(data, {type:'binary'});
         workbook.SheetNames.forEach( sheet => {
             const rowObject = xlsx.utils.sheet_to_json(workbook.Sheets[sheet]);

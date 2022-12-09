@@ -31,6 +31,8 @@ export const WinnersContainer = styled.div`
     align-items: center;
     margin: 320px 600px;
     width: 30%;
+    background-color: white;
+    opacity: .75;
 
     @media  (max-width: 1536px) {
         
@@ -39,6 +41,13 @@ export const WinnersContainer = styled.div`
         heigth: 20%;
         margin: 280px 20px ;
         
+    }
+    @media  (max-width: 1366px) {
+        
+        display:block;
+        width: 100%;
+        heigth: auto;
+        margin: 210px 20px ;
     }
 `;
 
@@ -51,10 +60,14 @@ export const RewardImgContainer = styled.img`
     width: 30%;
 
     @media  (max-width: 1536px) {
-        
           display:block;
           width: 35%;
           margin: 160px 460px ;
+    }
+    @media  (max-width: 1366px) {
+          display:block;
+          width: 35%;
+          margin: 100px 460px ;
         
     }
 

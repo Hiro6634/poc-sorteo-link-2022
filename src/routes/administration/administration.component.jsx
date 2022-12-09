@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { RaffleContext } from '../../context/raffles.context'; 
 import { EmployeeContext } from '../../context/employees.context';
 import Raffles from '../../components/raffles/raffles.component';
@@ -15,21 +15,25 @@ import { SaveWinners, excelAjson } from '../../utils/filesutils';
 import { WinnerContext } from '../../context/winners.context';
 
 const Administration = () => {
+    let text = 0;
     const {
         employees,
         loadEmployees, 
     } = useContext(EmployeeContext);
 
-    const {winners} = useContext(WinnerContext);
+    const {
+        getWinnersToSave, 
+        setWinnersColumns, 
+    } = useContext(WinnerContext);
 
-    // const apiRaffleContext = useContext(RaffleContext);
-    // const apiWinnerContext = useContext(WinnerContext);
-    // const apiEmployeeContext = useContext(EmployeeContext);
+    const apiRaffleContext = useContext(RaffleContext);
+    const apiWinnerContext = useContext(WinnerContext);
+    const apiEmployeeContext = useContext(EmployeeContext);
 
     const inputRef = useRef(null);
 
     const handleWinners = () => {
-        SaveWinners(winners);
+        SaveWinners(getWinnersToSave());
     }
 
     const handleLoadEmployees = () => {
@@ -49,7 +53,11 @@ const Administration = () => {
 
 
     const handleTest =  () => {
-        RaffleProcess()
+        RunRaffleProcess(apiRaffleContext, apiWinnerContext, apiEmployeeContext);
+        // const columns = getWinnersColumns();
+        // console.log("COLUMNS:" + columns);
+        // setWinnersColumns(columns + 1);
+        // text = getWinnersColumns();
     }   
 
     return(

@@ -23,23 +23,35 @@ export const WinnerContext = createContext({
 
 export const WinnersProvider = ({children}) => {
     const [winners, setWinners] = useState([]);
+    const [winColumns, setWinColumns] = useState(0);
 
     const addWinner =( winner) => {
-        console.log("ADD_WINNER:", winner);
         setWinners(old=>[...old, winner]);
+    }
 
+    const setWinnersColumns = (value) => {
+        setWinColumns( value);
     }
 
     const getWinnerByRaffleId = (raffleID) => {
         return winners.filter((value)=>{
+            if(raffleID === undefined || raffleID === null)
+                return false;
             return value.sorteo===raffleID;
         },[]);
+    }
+
+    const getWinnersToSave = () => {
+        return winners;
     }
 
     const value = {
         winners, 
         addWinner,
-        getWinnerByRaffleId
+        getWinnersToSave,
+        getWinnerByRaffleId,
+        setWinnersColumns,
+        winColumns
     };
 
     return(

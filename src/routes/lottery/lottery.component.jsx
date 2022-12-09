@@ -22,29 +22,10 @@ const Lottery = () => {
     } = useContext(RaffleContext);
 
     useEffect(() => { 
-        ruffleProcess();
+        console.log("DISPLAY HEIGHT:" + window.screen.availHeight);
+        console.log("DISPLAY WIDTH:" + window.screen.availWidth);
     },[]);
 
-    const ruffleProcess = async () => {
-        let raffle = getNextRaffle();
-        console.log("RAFFLE:", raffle);
-
-        while( raffle !== undefined ){
-            setRaffleState(raffle, RaffleStates.ENPROGRESO);
-            console.log("PRE");
-            await Sleep(raffle.tiempos.pre*1000)
-            console.log("SORTEO");
-            RaffleProcess(raffle);
-            await Sleep(raffle.tiempos.duracion*1000);
-            console.log("FIN DEL SORTEO");
-            setRaffleState(raffle, RaffleStates.SORTEADO);
-            
-            raffle = getNextRaffle();
-            console.log("RAFFLE:", raffle);
-        }
-
-        console.log("BYE:", raffles);
-    }
 
     return(
         <LotteryContainer>
