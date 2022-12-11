@@ -14,7 +14,7 @@ export const RaffleContext = createContext({
 
 export const RafflesProvider = ({children}) => {
     const [raffles] = useState(RAFFLES);
-    const [currentRaffle, setCurrentRaffle] = useState(null);
+    const [rafflesPaused, setRafflePaused] = useState(true);
 
     const getNextRaffle = () => {
         return raffles.find((value, index, array)=>{
@@ -27,12 +27,18 @@ export const RafflesProvider = ({children}) => {
         raffles[index].estado = state;
     }
 
+    const addRaffleWinner = (raffle, winner) => {
+        const index = raffles.indexOf(raffle);
+        raffles[index].winners.push(winner);
+    }
+
     const value = { 
         raffles,
         getNextRaffle,
         setRaffleState,
-        currentRaffle,
-        setCurrentRaffle
+        addRaffleWinner,
+        rafflesPaused,
+        setRafflePaused
     };
     return(
         <RaffleContext.Provider value={value}>{children}</RaffleContext.Provider>

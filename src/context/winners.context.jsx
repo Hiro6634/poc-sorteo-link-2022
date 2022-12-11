@@ -23,7 +23,7 @@ export const WinnerContext = createContext({
 
 export const WinnersProvider = ({children}) => {
     const [winners, setWinners] = useState([]);
-    const [winColumns, setWinColumns] = useState(0);
+    const [winColumns, setWinColumns] = useState(0);    
 
     const addWinner =( winner) => {
         setWinners(old=>[...old, winner]);
@@ -47,6 +47,7 @@ export const WinnersProvider = ({children}) => {
 
     const value = {
         winners, 
+        setWinners,
         addWinner,
         getWinnersToSave,
         getWinnerByRaffleId,

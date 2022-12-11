@@ -4,6 +4,9 @@ import { useContext, useEffect } from 'react';
 import { RaffleContext } from '../../context/raffles.context';
 import LotteryView from '../../components/lottery-view/lottery-view.component';
 
+import WinnersView from '../../components/winners-view/winners-view.component';
+
+import LotteryFixedScreen from '../../assets/PantallasPremio_Fija.jpg';
 // import lotteryMask from '../../assets/MascaraSorteo.png';
 import { Sleep } from '../../utils/utils';
 import { RaffleStates } from '../../context/raffles.context';
@@ -12,13 +15,15 @@ import { RaffleProcess } from '../../business/raffle-process';
 
 import { 
     LotteryContainer,
+    RaffleFixScreenContainer
 } from './lottery.styles';
 
 const Lottery = () => {
     const {
         raffles,
         getNextRaffle,
-        setRaffleState
+        setRaffleState,
+        RafflePaused
     } = useContext(RaffleContext);
 
     useEffect(() => { 
@@ -29,7 +34,7 @@ const Lottery = () => {
 
     return(
         <LotteryContainer>
-            <LotteryView/>
+            <WinnersView winnersList={[]}/>            
         </LotteryContainer>
         );
     
