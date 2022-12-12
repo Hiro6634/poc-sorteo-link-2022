@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { RaffleContext } from '../../context/raffles.context';
 import { Sleep } from '../../utils/utils';
+import WinnersView from '../../components/winners-view/winners-view.component';
 
 class ItemProvider {
     _queue = [];
@@ -51,113 +52,91 @@ class ItemProvider {
 
 const Test = () => {
     const {raffles} = useContext(RaffleContext);
-    const [queue, setQueue] = useState([]);
     const [isBusy, setIsBusy] = useState(false);
+    const [isRunning, setIsRunning] = useState(false);
+    const [winnersList, setWinnersList] = useState([]);
+    const [columns, setColumns] = useState(1);
+    const [reward, setReward] = useState();
+    const [placa, setPlaca] = useState(false);
 
-    const enqueue = (job) => {
-        setQueue(old => [...old, {job}]);
-    }
-    
-    const run = () => {
-        let next = queue.shift();
-        console.log("NEXT", next);
-        if(next){
-            if( isBusy)
-            new Promise((resolve, reject)=>{
-                next.job();
-                console.log("Job Ended...");
-                run();
-            }).then((value)=>{
-                run();
-            });
-        }
-    }
-    
-    const handleShowQueue = () => {
-        console.log("QUEUE", queue);
+    const process =  async (raffle) => {
+        setIsBusy(true);
+        console.log("...");
+        setPlaca(true);
+        const winners = raffle.winners;
+        const winTimer = (raffle.tiempos.duracion / raffle.ganadores) * 1000;
+        await Sleep(raffle.tiempos.placa * 1000);
+        setPlaca(false);
+        setColumns(raffle.columnas);
+        setWinnersList([]);
+        setReward(raffle.premio);
+        console.log("SORTEO: "+ raffle.premio);
+        await Sleep(raffle.tiempos.pre * 1000);
+        const raffleInterval = setInterval(async ()=>{
+            const winner = winners.shift();
+            if(winner){
+                console.log(winner.apellido + ", "+ winner.nombre);
+                addWinner(winner);
+            } else {
+                clearInterval(raffleInterval);
+                await Sleep(raffle.tiempos.pre * 1000);
+                setIsBusy(false);
+            }
+        }, winTimer);
     }
 
     const handleTest = () => {
-        enqueue(()=>{
-            while(!isBusy);
-            setIsBusy(true);
-            console.log("First Task");
-            setTimeout(()=>{
-                console.log("First Task Ending...");
-                setIsBusy(false);
-            },5000);
-        });
-        enqueue(()=>{
-            while(!isBusy);
-            setIsBusy(true);
-            console.log("Second Task");
-            setIsBusy(false);
+        console.log("START");
+        setIsRunning(true);
+        // const raffle = raffles[0];
+        // const winners = raffle.winners;
+        // setColumns( raffle.columnas);
+        // setReward(raffle.premio);
+        // console.log("RAFFLE", raffle);
+        // console.log("COLUMNS:" + columns);
+        // console.log("WINNERS LIST", winnersList);
+        // const myInt = setInterval(()=>{
+        //     const winner = winners.shift();
+        //     if(winner){
+        //         addWinner(winner);
+        //     } else {
+        //         clearInterval(myInt);
+        //     }
 
-        });
-        enqueue(()=>{
-            while(!isBusy);
-            setIsBusy(true);
-            console.log("Third Task");
-            setIsBusy(false);
-        });
-
-
+        // }, 2000);
     }
 
-    const transactionStatus = (seconds) => new Promise((resolve, reject)=>{
-        console.log("Start Task ", seconds);
-        setTimeout(()=>{
-            resolve('Your Transaction is successful ' + seconds);
-        }, seconds * 1000);
-    });
+    const addWinner = (winner) => {
+        setWinnersList(old=>[...old, winner]);
+    }
 
-    function PromiseQueue (tasks = [], concurrentCount = 1) {
-        let Total = tasks.length;
-        let todo = tasks;
-        let running = [];
-        let complete = [];
-        let count = concurrentCount;
-
-        const runNext = () => {
-            return ((running.length < count) && todo.length);
+    useEffect(()=>{
+        console.log("ISBUSY:" + isBusy);
+        if( !isRunning) return;
+        if(!isBusy){
+            const raffle = raffles.shift();
+            if(raffle){
+                process(raffle);
+            } else {
+                setIsRunning(false);
+            }
         }
-
-        const run = () => {
-            const promise = todo.shift();
-            promise.then((value)=>{
-                console.log("WTF:", value);
-            });
-        }
-    }
-
-    const handleTest3 = () => {
-        const itemProvider = new ItemProvider();
-
-        itemProvider.enqueue(()=>{
-            console.log("First Task Starting...");
-            setTimeout(()=>{
-                console.log("First Task Ending...");
-            }, 5000);
-        });
-        // itemProvider.enqueue(()=>{
-        //     console.log("Second Task Starting...");
-        //     setTimeout(()=>{
-        //         console.log("Second Task Ending...");
-        //     }, 2000);
-        // });
-        // itemProvider.enqueue(()=>{
-        //     console.log("Third Task Starting...");
-        //     setTimeout(()=>{
-        //         console.log("Third Task Ending...");
-        //     }, 6000);
-        // });
-    }
+    },[isBusy, isRunning, winnersList]);
 
     return(
         <div>
-            <button onClick={handleTest3}>TEST</button>
-            <button onClick={handleShowQueue}>SHOW</button>
-            <button onClick={run}>RUN</button>
+            <button onClick={handleTest}>TEST</button>
+            <button onClick={()=>{setWinnersList([])}}>CLEAR</button>
+            <div>
+            {
+                placa?(<h1>PLACA</h1>):( 
+                    <div>
+                        <h2>{reward}</h2>
+                        <WinnersView winnersList={winnersList} columns={columns}/>
+                    </div>
+            )
+            }
+            </div>    
         </div>
     );
 }

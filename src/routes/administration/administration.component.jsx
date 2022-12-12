@@ -1,4 +1,5 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { RaffleContext } from '../../context/raffles.context'; 
 import { EmployeeContext } from '../../context/employees.context';
 import Raffles from '../../components/raffles/raffles.component';
@@ -17,10 +18,7 @@ import WinnersView from '../../components/winners-view/winners-view.component';
 import { Sleep } from '../../utils/utils';
 
 const Administration = () => {
-    const [showWinner, setShowWinner] = useState({
-        timer: 0,
-        winners: []
-    }); 
+    const navigate = useNavigate();
     const {
         employees,
         loadEmployees, 
@@ -75,10 +73,6 @@ const Administration = () => {
         console.log("START");
         // await Sleep(raffles[0].tiempos.pre * 1000);
         // console.log("Raffle ID:", raffles[0].id);
-        setShowWinner({
-            timer:2, 
-            winners: raffles[0].winners
-        });
         // await Sleep(raffles[1].tiempos.pre * 1000);
         // console.log("Raffle ID:", raffles[1].id);
 
@@ -119,15 +113,8 @@ const Administration = () => {
     const handleTest =  async () => {
         setWinners(getWinners( raffles, addRaffleWinner, apiEmployeeContext ))
         console.log("RAFFLES:", raffles);
-        setRafflePaused(true);
         Process();
-        // setShowWinner(["UNO","DOS"]);
-        // RunRaffleProcess( apiRaffleContext);
-        // RunRaffleProcess(apiRaffleContext, apiWinnerContext, apiEmployeeContext);
-        // const columns = getWinnersColumns();
-        // console.log("COLUMNS:" + columns);
-        // setWinnersColumns(columns + 1);
-        // text = getWinnersColumns();
+        navigate('/lottery');
     }   
 
     return(
@@ -149,9 +136,7 @@ const Administration = () => {
                 <Raffles/>
             </div>
             <div>
-            <Button  onClick={()=>console.log("EMPLOYEES:", employees)}>Employees</Button>
-            <Button  onClick={handleTest}>SORTEO</Button>
-            <WinnersView winnersList={showWinner}/>
+            <Button  onClick={handleTest}>INICIAR SORTEO</Button>
             </div>
         </AdministratorContainer>
     );

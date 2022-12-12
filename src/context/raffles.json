@@ -6,8 +6,10 @@
         "columnas":3,
         "estado":"PENDIENTE",
         "tiempos":{
-            "pre": 5,
-            "duracion": 10
+            "placa": 10,
+            "pre": 2,
+            "duracion": 10,
+            "pos": 5
         },
         "winners":[]
     },
@@ -18,8 +20,10 @@
         "columnas":3,
         "estado":"PENDIENTE",
         "tiempos":{
-            "pre": 5,
-            "duracion": 10
+            "placa": 10,
+            "pre": 2,
+            "duracion": 10,
+            "pos": 5
         },
         "winners":[]
     },
@@ -30,8 +34,10 @@
         "columnas":3,
         "estado":"PENDIENTE",
         "tiempos":{
-            "pre": 5,
-            "duracion": 10
+            "placa": 10,
+            "pre": 2,
+            "duracion": 10,
+            "pos": 5
         },
         "winners":[]
     },
@@ -42,8 +48,10 @@
         "columnas":2,
         "estado":"PENDIENTE",
         "tiempos":{
-            "pre": 5,
-            "duracion": 10
+            "placa": 10,
+            "pre": 2,
+            "duracion": 10,
+            "pos": 5
         },
         "winners":[]
     },
@@ -54,8 +62,10 @@
         "columnas":1,
         "estado":"PENDIENTE",
         "tiempos":{
-            "pre": 5,
-            "duracion": 10
+            "placa": 10,
+            "pre": 2,
+            "duracion": 10,
+            "pos": 5
         },
         "winners":[]
     },
@@ -66,8 +76,10 @@
         "columnas":1,
         "estado":"PENDIENTE",
         "tiempos":{
-            "pre": 5,
-            "duracion": 10
+            "placa": 10,
+            "pre": 2,
+            "duracion": 5,
+            "pos": 5
         },
         "winners":[]
     }
