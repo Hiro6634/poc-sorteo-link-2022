@@ -3,7 +3,8 @@ body {
   height: 100%;
   background-image: url('./assets/PantallasSORTEOS.jpg');
   background-position: 0 0;
-  background-size: cover;
+  background-size: cover; 
+  background-repeat: no-repeat;
   position: fixed;
 
 

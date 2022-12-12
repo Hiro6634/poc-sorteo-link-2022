@@ -1,13 +1,11 @@
-import Raffles from '../../components/raffles/raffles.component';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { RaffleContext } from '../../context/raffles.context'; 
 import { EmployeeContext } from '../../context/employees.context';
+import Raffles from '../../components/raffles/raffles.component';
 import Button from '../../components/button/button.component';
-import { RaffleStates } from '../../context/raffles.context';
-import { Sleep } from '../../utils/utils';
-import { RunRaffleProcess } from '../../business/raffle-process';
 
-import EMPLOYEES from '../../context/employees.json';
+import { getWinners } from '../../business/raffle-process';
 
 import { 
     AdministratorContainer, 
@@ -16,99 +14,78 @@ import {
 
 import { SaveWinners, excelAjson } from '../../utils/filesutils';
 import { WinnerContext } from '../../context/winners.context';
-import { GetWinner } from '../../business/raffle-process';
 
 const Administration = () => {
-    const [myArray, setMyArray] = useState([]);
+    const [loadButtonText, setLoadButtonText] = useState('CARGAR EMPLEADOS ');
+    const navigate = useNavigate();
+    const { loadEmployees } = useContext(EmployeeContext);
+
     const {
-        loadEmployees, 
-        employees, 
-        getEmployeeByIndex,
-        removeEmployeeByIndex,
-        selectPreviousEmployeesbyIndex
-    } = useContext(EmployeeContext);
+        getWinnersToSave, 
+        setWinners 
+    } = useContext(WinnerContext);
 
-    const {winners, addWinner} = useContext(WinnerContext);
     const { 
-        running, 
-        setRunning,
-        raffles,
-        getNextRaffle,
-        setRaffleState
-    } = useContext( RaffleContext);
+        raffles, 
+        addRaffleWinner,
+        setIsRunning,
+    } = useContext(RaffleContext);
 
-    const apiRaffleContext = useContext(RaffleContext);
-    const apiWinnerContext = useContext(WinnerContext);
     const apiEmployeeContext = useContext(EmployeeContext);
-
-    useEffect(()=>{
-    });
-
-
-    const handleEmployees = () => {
-        const tmpEmployees = excelAjson();
-        //TODO: Aca cargamos los datos de EXCELL y el json obtenido lo pasamos al loadEmployees
-        loadEmployees(tmpEmployees);
-    }
+    const inputRef = useRef(null);
 
     const handleWinners = () => {
-        SaveWinners(winners);
+        SaveWinners(getWinnersToSave());
     }
 
-    const handleWinner = () => {
-        // GetWinner(employees,removeEmployeeByIndex,getEmployeeByIndex);
-        console.log("WINNERS:", winners);
-        console.log("EMPLOYEES:", employees);
+    const handleLoadEmployees = () => {
+        inputRef.current.click();
     }
 
-    const handleTest =  () => {
-        RunRaffleProcess(apiRaffleContext, apiWinnerContext, apiEmployeeContext);
+    const handleFileChange = async event => {
+        const fileObj = event.target.files && event.target.files[0];
+        if(!fileObj){
+            return;
+        }
+        // reset file input
+        event.target.value = null;
 
-        // let winner = GetWinner(apiEmployeeContext);
-        // console.log("THE WINNER IS:", winner);
+        loadEmployees(await excelAjson(fileObj));
+        setWinners(getWinners( raffles, addRaffleWinner, apiEmployeeContext ))
+        setLoadButtonText("CARGAR EMPLEADOS *")
+    }
 
-        // addWinner(winner);
-        // console.log("WINNERS:", winners);
-
-        // winner = GetWinner(apiEmployeeContext);
-        // addWinner(winner);
-        // console.log("WINNERS:", winners);
+    const handleStartLottery =  async () => {
+        console.log("RAFFLES:", raffles);
+        setIsRunning(true);
+        navigate('/lottery');
     }   
 
     return(
         <AdministratorContainer>
             <LoadingButtonContainer>
                 <input
-
-                id="exportButton"
-
-                color="primary"
-
-                type="file"
-
-                accept=".xls, .xlsx"
-
-                onClick={excelAjson}
-
-              />
+                    style={{display:'none'}}
+                    ref={inputRef}
+                    type='file'
+                    onChange={handleFileChange}
+                    accept=".xls, .xlsx"
+                />
+                <Button  onClick={handleLoadEmployees}>
+                    {loadButtonText}
+                </Button>
             </LoadingButtonContainer>
             <LoadingButtonContainer>
                 <Button onClick={handleWinners}>DESCARGAR GANADORES</Button>            
-           
-            </LoadingButtonContainer>
-            <LoadingButtonContainer>
-                <Button onClick={handleWinner}>TEST GANADOR</Button>            
-           
             </LoadingButtonContainer>
             <div>
                 <Raffles/>
             </div>
-
-            <Button onClick={handleTest}>TEST</Button>
+            <div>
+            <Button  onClick={handleStartLottery}>INICIAR SORTEO</Button>
+            </div>
         </AdministratorContainer>
     );
-
-
 }
 
 

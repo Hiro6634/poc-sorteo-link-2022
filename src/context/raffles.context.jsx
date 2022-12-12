@@ -9,23 +9,12 @@ export const RaffleStates = {
 };
 
 export const RaffleContext = createContext({
-    isLoading: true,
-    running: false, 
     raffles: []
 });
 
-export const RafflesStates = {
-    PENDIENTE: 'PENDIENTE',
-    ENPROGRESO: 'ENPROGRESO',
-    SORTEADO: 'SORTEADO'
-};
-
 export const RafflesProvider = ({children}) => {
-    const [running, setRunning] = useState({running: false});
     const [raffles] = useState(RAFFLES);
-    const [isLoading, setIsLoading] = useState({isLoading: true});
-
-    const setLoadingValue = (value) => setIsLoading(value);
+    const [isRunning, setIsRunning] = useState(false);
 
     const getNextRaffle = () => {
         return raffles.find((value, index, array)=>{
@@ -38,14 +27,18 @@ export const RafflesProvider = ({children}) => {
         raffles[index].estado = state;
     }
 
+    const addRaffleWinner = (raffle, winner) => {
+        const index = raffles.indexOf(raffle);
+        raffles[index].winners.push(winner);
+    }
+
     const value = { 
         raffles,
         getNextRaffle,
         setRaffleState,
-        running,
-        setRunning,
-        isLoading,
-        setLoadingValue
+        addRaffleWinner,
+        isRunning,
+        setIsRunning
     };
     return(
         <RaffleContext.Provider value={value}>{children}</RaffleContext.Provider>

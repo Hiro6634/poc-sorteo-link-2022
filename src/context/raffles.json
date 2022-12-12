@@ -3,60 +3,84 @@
         "id": 1,
         "premio":"15mil pesos",
         "ganadores":9,
-        "estado":"SORTEADO",
+        "columnas":3,
+        "estado":"PENDIENTE",
         "tiempos":{
-            "pre": 5,
-            "duracion": 10
-        }
+            "placa": 10,
+            "pre": 2,
+            "duracion": 10,
+            "pos": 5
+        },
+        "winners":[]
     },
     {
         "id": 2,
         "premio":"15mil pesos",
         "ganadores":9,
-        "estado":"SORTEADO",
+        "columnas":3,
+        "estado":"PENDIENTE",
         "tiempos":{
-            "pre": 5,
-            "duracion": 10
-        }
+            "placa": 10,
+            "pre": 2,
+            "duracion": 10,
+            "pos": 5
+        },
+        "winners":[]
     },
     {
         "id": 3,
         "premio":"15mil pesos",
         "ganadores":9,
-        "estado":"SORTEADO",
+        "columnas":3,
+        "estado":"PENDIENTE",
         "tiempos":{
-            "pre": 5,
-            "duracion": 10
-        }
+            "placa": 10,
+            "pre": 2,
+            "duracion": 10,
+            "pos": 5
+        },
+        "winners":[]
     },
     {
         "id": 4,
         "premio":"30mil pesos",
         "ganadores":4,
+        "columnas":2,
         "estado":"PENDIENTE",
         "tiempos":{
-            "pre": 5,
-            "duracion": 10
-        }
+            "placa": 10,
+            "pre": 2,
+            "duracion": 10,
+            "pos": 5
+        },
+        "winners":[]
     },
     {
         "id": 5,
         "premio":"60mil pesos",
         "ganadores":2,
+        "columnas":1,
         "estado":"PENDIENTE",
         "tiempos":{
-            "pre": 5,
-            "duracion": 10
-        }
+            "placa": 10,
+            "pre": 2,
+            "duracion": 10,
+            "pos": 5
+        },
+        "winners":[]
     },
     {
         "id": 6,
         "premio":"80mil pesos",
         "ganadores":1,
+        "columnas":1,
         "estado":"PENDIENTE",
         "tiempos":{
-            "pre": 5,
-            "duracion": 10
-        }
+            "placa": 10,
+            "pre": 2,
+            "duracion": 5,
+            "pos": 15
+        },
+        "winners":[]
     }
 ]

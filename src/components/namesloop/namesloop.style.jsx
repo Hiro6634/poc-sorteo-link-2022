@@ -5,8 +5,8 @@ export const NameLoopContainer = styled.div`
     display:flex;
     flex-direction: column;
     justify-content: center;
-    width: 600px;
-    height:150px;
+    width: 100%;
+    height:130px;
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
@@ -17,6 +17,6 @@ export const NameLoopContainer = styled.div`
     color: blue;
     text-align: center;
     background-color: white ;
-    opacity: .75;
+    opacity: .5;
 
 `;

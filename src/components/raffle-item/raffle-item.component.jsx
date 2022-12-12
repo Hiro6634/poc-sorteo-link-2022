@@ -1,7 +1,3 @@
-import { useContext } from 'react';
-import { RaffleContext } from '../../context/raffles.context';
-import { WinnerContext, WinnersProvider } from '../../context/winners.context';
-
 import { 
     RaffleItemContainer,
     IdContainer,
@@ -12,15 +8,9 @@ import {
 
 const RaffleItem = ({raffle}) => {
     const { id, premio, ganadores, estado, pausa } = raffle;
-    const { running, setRunning, setLoadingValue} = useContext(RaffleContext);
-    // const { winners, addWinner} = useContext(WinnerContext);
-
-    console.log("RUNNING:" + running.running);
 
     const handleLaunchButton = () => {
         console.log("SET RUNNING");
-        setRunning({running: true});
-        setLoadingValue(true);
     };
 
     return(
