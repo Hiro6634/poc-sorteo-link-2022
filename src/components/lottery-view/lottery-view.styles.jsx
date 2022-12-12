@@ -4,10 +4,10 @@ export const LotteryContainer = styled.div`
     width: 100%;
 `;
 
-export const RewardImgContainer = styled.img`
-    width: 40%;
-    margin: 0px 25%;
-`;
+// export const RewardImgContainer = styled.img`
+//     width: 40%;
+//     margin: 0px 25%;
+// `;
 
 export const RewardContainer = styled.div`
     width: 100%;
