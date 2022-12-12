@@ -30,12 +30,12 @@ export const WinnersContainer = styled.span`
 `;
 
 export const StatusContainer = styled.span`
-    width: 30%;
+    width: 20%;
     text-align: left;
 `;
 
-export const PauseContainer = styled.span`
-    width: 15%;
+export const TimerContainer = styled.span`
+    width: 5%;
     text-align: left;
 `;
 

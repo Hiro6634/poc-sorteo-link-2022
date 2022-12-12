@@ -9,7 +9,7 @@ export const NameLoopContainer = styled.div`
     height:130px;
     margin-left: auto;
     margin-right: auto;
-    padding: 20px;
+    padding: 20px 100px;
     font-size: 28px;
     font-weight: bold;
     border: 3px grey solid;

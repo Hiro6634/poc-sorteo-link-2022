@@ -3,11 +3,11 @@ import {
     IdContainer,
     RewardContainer,
     WinnersContainer,StatusContainer,
-    PauseContainer
+    TimerContainer
 } from './raffle-item.styles';
 
 const RaffleItem = ({raffle}) => {
-    const { id, premio, ganadores, estado, pausa } = raffle;
+    const { id, premio, ganadores, estado, tiempos } = raffle;
 
     const handleLaunchButton = () => {
         console.log("SET RUNNING");
@@ -19,7 +19,10 @@ const RaffleItem = ({raffle}) => {
             <RewardContainer>{premio}</RewardContainer>
             <WinnersContainer>{ganadores}</WinnersContainer>
             <StatusContainer>{estado}</StatusContainer>
-            <PauseContainer>{pausa}</PauseContainer>
+            <TimerContainer>{tiempos.placa}</TimerContainer>
+            <TimerContainer>{tiempos.pre}</TimerContainer>
+            <TimerContainer>{tiempos.duracion}</TimerContainer>
+            <TimerContainer>{tiempos.pos}</TimerContainer>
         </RaffleItemContainer>
     );
 }

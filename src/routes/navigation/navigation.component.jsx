@@ -1,5 +1,6 @@
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import { Outlet } from 'react-router-dom';
+import { RaffleContext } from '../../context/raffles.context';
 
 import { 
     NavigationContainer,
@@ -7,10 +8,11 @@ import {
 } from './navigation.styles';
 
 const Navigation = () => {
+    const {setIsRunning} = useContext(RaffleContext);
     return(
         <Fragment>
             <NavigationContainer>
-                <NavLink to = '/'>ADMIN</NavLink>
+                <NavLink to = '/' onClick={()=>{setIsRunning(false)}}>ADMIN</NavLink>
                 <NavLink to = '/lottery'>SORTEO</NavLink>
             </NavigationContainer>
             <Outlet/>

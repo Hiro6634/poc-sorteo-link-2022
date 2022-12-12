@@ -6,10 +6,10 @@
         "columnas":3,
         "estado":"PENDIENTE",
         "tiempos":{
-            "placa": 10,
+            "placa": 15,
             "pre": 2,
             "duracion": 10,
-            "pos": 5
+            "pos": 30
         },
         "winners":[]
     },
@@ -48,7 +48,7 @@
         "columnas":2,
         "estado":"PENDIENTE",
         "tiempos":{
-            "placa": 10,
+            "placa": 1,
             "pre": 2,
             "duracion": 10,
             "pos": 5

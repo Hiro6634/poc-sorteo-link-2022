@@ -39,12 +39,12 @@ export const WinnersHdrContainer = styled.span`
 `;
 
 export const StatusHdrContainer = styled.span`
-    width: 30%;
+    width: 20%;
     text-align: left;
 `;
 
-export const PauseHdrContainer = styled.span`
-    width: 15%;
+export const TimerHdrContainer = styled.span`
+    width: 5%;
     text-align: left;
 `;
 

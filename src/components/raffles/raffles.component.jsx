@@ -13,7 +13,7 @@ import {
     RewardHdrContainer,
     WinnersHdrContainer,
     StatusHdrContainer,
-    PauseHdrContainer
+    TimerHdrContainer
 } from './raffles.styles';
 
 const Raffles = () => {
@@ -27,7 +27,10 @@ const Raffles = () => {
                 <RewardHdrContainer>Premio</RewardHdrContainer>
                 <WinnersHdrContainer>Ganadores</WinnersHdrContainer>
                 <StatusHdrContainer>Estado</StatusHdrContainer>
-                <PauseHdrContainer>Pausa</PauseHdrContainer>
+                <TimerHdrContainer>Placa</TimerHdrContainer>
+                <TimerHdrContainer>Pre</TimerHdrContainer>
+                <TimerHdrContainer>Duracion</TimerHdrContainer>
+                <TimerHdrContainer>Pos</TimerHdrContainer>
             </RaffleHdrTableContainer>
             <RafflesItems>
             {

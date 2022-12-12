@@ -1,18 +1,24 @@
 import * as xlsx from 'xlsx';
 
-
 const readExcelAsync = (inputFile) => {
+    const reader = new FileReader();
+    console.log("readExcelAsync");
     return new Promise((resolve, reject)=>{
-        let reader = new FileReader();
+        reader.onerror = () => {
+            console.error("Some ERROR");
+            reader.abort();
+            reject(new DOMException("Problem parsing input file: " + inputFile));
+        };
         reader.onload = () => {
+            console.log("Loading success");
             resolve(reader.result);
-        }
-
-        reader.onerror = reject;
+        };
 
         reader.readAsBinaryString(inputFile);
     });
 }
+
+
 
 export const excelAjson = async (inputFile) => {
     let result = null;

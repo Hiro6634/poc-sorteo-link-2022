@@ -8,12 +8,12 @@ import {
     NameLoopContainer 
 } from './namesloop.style';
 
-const NamesLoop = () => {
+const NamesLoop = ({interval=200}) => {
     const {employees} = useContext(EmployeeContext);
 
     return(
         <NameLoopContainer>
-            <TextLoop interval={200}>
+            <TextLoop interval={interval}>
                 {
                     employees.length ? (employees.map((employee)=>(
                     <span key={employee.id}>{employee.Apellido}, {employee.Nombre}</span>

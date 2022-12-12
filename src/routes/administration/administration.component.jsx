@@ -14,11 +14,13 @@ import {
 
 import { SaveWinners, excelAjson } from '../../utils/filesutils';
 import { WinnerContext } from '../../context/winners.context';
+import { Sleep } from '../../utils/utils';
 
 const Administration = () => {
     const [loadButtonText, setLoadButtonText] = useState('CARGAR EMPLEADOS ');
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
-    const { loadEmployees } = useContext(EmployeeContext);
+    const { employees, loadEmployees } = useContext(EmployeeContext);
 
     const {
         getWinnersToSave, 
@@ -39,6 +41,7 @@ const Administration = () => {
     }
 
     const handleLoadEmployees = () => {
+        setIsLoading(true);
         inputRef.current.click();
     }
 
@@ -49,12 +52,17 @@ const Administration = () => {
         }
         // reset file input
         event.target.value = null;
-
+        console.log("LoadEmployees:", fileObj);
         loadEmployees(await excelAjson(fileObj));
+        await Sleep(2000);
+        console.log("EMPLOYEES", employees);
+        setIsLoading(false);
         setLoadButtonText("CARGAR EMPLEADOS *")
     }
 
     const handleStartLottery =  async () => {
+        console.log("EMPLOYEES", employees);
+        console.log("getWinners");
         setWinners(getWinners( raffles, addRaffleWinner, apiEmployeeContext ))
         console.log("RAFFLES:", raffles);
         setIsRunning(true);
@@ -71,7 +79,7 @@ const Administration = () => {
                     onChange={handleFileChange}
                     accept=".xls, .xlsx"
                 />
-                <Button  onClick={handleLoadEmployees}>
+                <Button  onClick={handleLoadEmployees} isLoading={isLoading}>
                     {loadButtonText}
                 </Button>
             </LoadingButtonContainer>

@@ -18,7 +18,9 @@ import {
     RaffleFixScreenContainer,
     PrizeImgContainer,
     NamesLoopContainer,
-    PrizeContainer
+    PrizeContainer,
+    CountdownContainer,
+    RaffleTransitionContainer
 } from './lottery.styles';
 
 const Lottery = () => {
@@ -33,7 +35,9 @@ const Lottery = () => {
         raffles,
         setRaffleState, 
         isRunning, 
-        setIsRunning 
+        setIsRunning,
+        countdown,
+        setCountdown
     } = useContext(RaffleContext);
 
     const addWinner = (winner) => {
@@ -56,11 +60,19 @@ const Lottery = () => {
 
     const process =  async (raffle) => {
         setIsBusy(true);
-        setRaffleState(RaffleStates.ENPROGRESO);
+        setRaffleState(raffle,RaffleStates.ENPROGRESO);
         console.log("...");
         setPlaca(true);
         const winners = raffle.winners;
         const winTimer = (raffle.tiempos.duracion / raffle.ganadores) * 1000;
+        setCountdown(raffle.tiempos.placa * 10);
+        const countdownTimer = setInterval(()=>{
+            if( countdown>0){
+                setCountdown(old=>old-1)
+            } else {
+                clearInterval(countdownTimer);
+            }
+        }, 100);
         await Sleep(raffle.tiempos.placa * 1000);
         setPlaca(false);
         setColumns(raffle.columnas);
@@ -75,7 +87,7 @@ const Lottery = () => {
                 addWinner(winner);
             } else {
                 clearInterval(raffleInterval);
-                setRaffleState(RaffleStates.SORTEADO);
+                setRaffleState(raffle,RaffleStates.SORTEADO);
                 await Sleep(raffle.tiempos.pre * 1000);
                 setIsBusy(false);
             }
@@ -92,8 +104,8 @@ const Lottery = () => {
     // }
 
     useEffect(() => { 
-        // console.log("DISPLAY HEIGHT:" + window.screen.availHeight);
-        // console.log("DISPLAY WIDTH:" + window.screen.availWidth);
+        console.log("DISPLAY HEIGHT:" + window.screen.availHeight);
+        console.log("DISPLAY WIDTH:" + window.screen.availWidth);
         console.log("IS RUNNNG:" + isRunning);
         console.log("ISBUSY:" + isBusy);
         console.log("PLACA:" + placa);
@@ -114,18 +126,21 @@ const Lottery = () => {
 
     return(<div>
         {
-        placa?(<RaffleFixScreenContainer src={PlacaSorteos} alt="Placa"/>):(
+        placa?(
+                <RaffleTransitionContainer>
+                    <RaffleFixScreenContainer src={PlacaSorteos} alt="Placa"/>
+                    <CountdownContainer isCountdown>{Math.floor(countdown/10)+'.'+(countdown%10)}</CountdownContainer>
+                </RaffleTransitionContainer>
+            ):(
             <LotteryContainer>
-            <PrizeContainer>
-                <PrizeImgContainer src={prize}/>
-            </PrizeContainer>
-            <NamesLoopContainer>
-                <NamesLoop/>
-            </NamesLoopContainer>
-            <WinnersViewContainer>
+                <PrizeContainer>
+                    <PrizeImgContainer src={prize}/>
+                </PrizeContainer>
+                <NamesLoopContainer>
+                    <NamesLoop/>
+                </NamesLoopContainer>
                 <WinnersView winnersList={winnersList} columns={columns}/>
-            </WinnersViewContainer>
-        </LotteryContainer>
+            </LotteryContainer>
         )
     }</div>
     );

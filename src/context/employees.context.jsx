@@ -15,27 +15,6 @@ export const EmployeesProvider = ({children}) =>  {
         setEmployees(newEmployee);
     }
 
-    const selectPreviousEmployeesbyIndex = (index, n) => {
-        const employeesLen = employees.length;
-        const maxIdx = employeesLen - 1;
-        const preWinners = [];
-        let startIx = index - n - 1;
-        let range = n;
-        console.log("MAXIDX:" + maxIdx);
-        
-        if((index - 1) < n){
-            startIx = index + 1
-        }
-        for( let ix = startIx; ix < index -1; ix++){
-            console.log("IX="+ix);
-        }         
-
-        return {
-            index: index,
-            n:  n
-        };
-    }
-
     const getEmployeeByIndex = (index) => {
         return employees[index];
     }
@@ -52,8 +31,7 @@ export const EmployeesProvider = ({children}) =>  {
         employees,
         loadEmployees,
         getEmployeeByIndex,
-        removeEmployeeByIndex,
-        selectPreviousEmployeesbyIndex
+        removeEmployeeByIndex
     };
     return(
         <EmployeeContext.Provider value={value}> {children} </EmployeeContext.Provider>
