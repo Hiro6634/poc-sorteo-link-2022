@@ -51,11 +51,11 @@ const Administration = () => {
         event.target.value = null;
 
         loadEmployees(await excelAjson(fileObj));
-        setWinners(getWinners( raffles, addRaffleWinner, apiEmployeeContext ))
         setLoadButtonText("CARGAR EMPLEADOS *")
     }
 
     const handleStartLottery =  async () => {
+        setWinners(getWinners( raffles, addRaffleWinner, apiEmployeeContext ))
         console.log("RAFFLES:", raffles);
         setIsRunning(true);
         navigate('/lottery');
