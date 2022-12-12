@@ -14,7 +14,7 @@ export const RaffleContext = createContext({
 
 export const RafflesProvider = ({children}) => {
     const [raffles] = useState(RAFFLES);
-    const [rafflesPaused, setRafflePaused] = useState(true);
+    const [isRunning, setIsRunning] = useState(false);
 
     const getNextRaffle = () => {
         return raffles.find((value, index, array)=>{
@@ -37,8 +37,8 @@ export const RafflesProvider = ({children}) => {
         getNextRaffle,
         setRaffleState,
         addRaffleWinner,
-        rafflesPaused,
-        setRafflePaused
+        isRunning,
+        setIsRunning
     };
     return(
         <RaffleContext.Provider value={value}>{children}</RaffleContext.Provider>

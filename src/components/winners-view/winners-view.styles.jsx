@@ -14,8 +14,9 @@ export const WinnersViewContainer = styled.div`
     column-count: ${props => props.columns ? props.columns : 1};
     column-gap: 40px;
     column-span: all;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: bold;
     color: blue;
+    background-color: white;
 
 `;

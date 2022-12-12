@@ -1,41 +1,40 @@
 import NamesLoop from '../../components/namesloop/namesloop.component';
 
 import { useContext, useEffect, useState } from 'react';
-import { RaffleContext } from '../../context/raffles.context';
-// import LotteryView from '../../components/lottery-view/lottery-view.component';
+import { RaffleContext, RaffleStates } from '../../context/raffles.context';
 
 import WinnersView from '../../components/winners-view/winners-view.component';
-
-import Reward15k from '../../assets/PantallasPremios-15mil.jpg';
-import Reward30k from '../../assets/PantallasPremios-30mil.jpg';
-import Reward60k from '../../assets/PantallasPremios-60mil.jpg';
-import Reward80k from '../../assets/PantallasPremios-80mil.jpg';
-import PlacaSorteos from '../../assets/PantallasPremio_Fija.jpg'
-import LotteryFixedScreen from '../../assets/PantallasPremio_Fija.jpg';
-// import lotteryMask from '../../assets/MascaraSorteo.png';
 import { Sleep } from '../../utils/utils';
 
-// import { RaffleStates } from '../../context/raffles.context';
-// import { RaffleProcess } from '../../business/raffle-process';
+import Prize15k from '../../assets/PantallasPremios-15mil.jpg';
+import Prize30k from '../../assets/PantallasPremios-30mil.jpg';
+import Prize60k from '../../assets/PantallasPremios-60mil.jpg';
+import Prize80k from '../../assets/PantallasPremios-80mil.jpg';
+import PlacaSorteos from '../../assets/PantallasPremio_Fija.jpg'
 
 import { 
     LotteryContainer,
     WinnersViewContainer,
     RaffleFixScreenContainer,
-    RewardImgContainer,
+    PrizeImgContainer,
     NamesLoopContainer,
-    RewardContainer
+    PrizeContainer
 } from './lottery.styles';
 
 const Lottery = () => {
     const [isBusy, setIsBusy] = useState(false);
-    const [isRunning, setIsRunning] = useState(true);
     const [winnersList, setWinnersList] = useState([]);
     const [columns, setColumns] = useState(1);
-    const [reward, setReward] = useState();
+    const [prize, setPrize] = useState();
     const [placa, setPlaca] = useState(false);
+    const [index, setIndex] = useState(0);
 
-    const { raffles } = useContext(RaffleContext);
+    const { 
+        raffles,
+        setRaffleState, 
+        isRunning, 
+        setIsRunning 
+    } = useContext(RaffleContext);
 
     const addWinner = (winner) => {
         setWinnersList(old=>[...old, winner]);
@@ -43,18 +42,21 @@ const Lottery = () => {
     const getRewardImg = (reward) =>{
         switch(reward){
             case "15mil pesos":
-                return Reward15k;
+                return Prize15k;
             case "30mil pesos":
-                return Reward30k;
+                return Prize30k;
             case "60mil pesos":
-                return Reward60k;
+                return Prize60k;
             case "80mil pesos":
-                return Reward80k;
+                return Prize80k;
+            default:
+                return PlacaSorteos;
         }
     }
 
     const process =  async (raffle) => {
         setIsBusy(true);
+        setRaffleState(RaffleStates.ENPROGRESO);
         console.log("...");
         setPlaca(true);
         const winners = raffle.winners;
@@ -63,7 +65,7 @@ const Lottery = () => {
         setPlaca(false);
         setColumns(raffle.columnas);
         setWinnersList([]);
-        setReward(getRewardImg( raffle.premio));
+        setPrize(getRewardImg( raffle.premio));
         console.log("SORTEO: "+ raffle.premio);
         await Sleep(raffle.tiempos.pre * 1000);
         const raffleInterval = setInterval(async ()=>{
@@ -73,56 +75,50 @@ const Lottery = () => {
                 addWinner(winner);
             } else {
                 clearInterval(raffleInterval);
+                setRaffleState(RaffleStates.SORTEADO);
                 await Sleep(raffle.tiempos.pre * 1000);
                 setIsBusy(false);
             }
         }, winTimer);
     }
 
-    const handleScreenClick = () =>{
-        new Promise((resolve, reject)=>{
-            setIsRunning(current =>!current);
-            resolve("OK");
-        }).then(()=>{
-            console.log("IsRUNNING:"+isRunning);
-        });
-    }
+    // const handleScreenClick = () =>{
+    //     new Promise((resolve, reject)=>{
+    //         setIsRunning(current =>!current);
+    //         resolve("OK");
+    //     }).then(()=>{
+    //         console.log("IsRUNNING:"+isRunning);
+    //     });
+    // }
 
     useEffect(() => { 
         // console.log("DISPLAY HEIGHT:" + window.screen.availHeight);
         // console.log("DISPLAY WIDTH:" + window.screen.availWidth);
-        let index = 0;
         console.log("IS RUNNNG:" + isRunning);
         console.log("ISBUSY:" + isBusy);
+        console.log("PLACA:" + placa);
         if( !isRunning) return;
         if(!isBusy){
             if( index < raffles.length ){
-                process(raffles[index++]);
+                const raffle = raffles[index];
+                setIndex(index=>(index + 1));
+                console.log("INDEX:"+index);
+                process(raffle);
             } else {
+                setPlaca(true);
                 setIsRunning(false);
             }
         }
-    },[isBusy, isRunning, winnersList]);
+    },[isBusy, isRunning, winnersList, placa]);
 
-//     <LotteryContainer onClick={handleScreenClick}>
-//     <RewardContainer>
-//         <RewardImgContainer src={reward}/>
-//     </RewardContainer>
-//     <NamesLoopContainer>
-//         <NamesLoop/>
-//     </NamesLoopContainer>
-//     <WinnersViewContainer>
-//         <WinnersView winnersList={winnersList} columns={columns}/>
-//     </WinnersViewContainer>
-// </LotteryContainer>
 
     return(<div>
         {
         placa?(<RaffleFixScreenContainer src={PlacaSorteos} alt="Placa"/>):(
             <LotteryContainer>
-            <RewardContainer>
-                <RewardImgContainer src={reward}/>
-            </RewardContainer>
+            <PrizeContainer>
+                <PrizeImgContainer src={prize}/>
+            </PrizeContainer>
             <NamesLoopContainer>
                 <NamesLoop/>
             </NamesLoopContainer>

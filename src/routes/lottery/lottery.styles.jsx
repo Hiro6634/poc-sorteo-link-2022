@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import imagen from '../../assets/PantallasPremio_Fija.jpg';
 
 export const LotteryContainer = styled.div`
     width: 100%;
@@ -44,7 +43,7 @@ export const RaffleFixScreenContainer = styled.img`
 //     }
 // `;
 
-export const RewardContainer = styled.div`
+export const PrizeContainer = styled.div`
     width: 60%;
     height: 40px;
     position: absolute;
@@ -52,12 +51,12 @@ export const RewardContainer = styled.div`
     left: 17%;
 `;
 
-export const RewardImgContainer = styled.img`
+export const PrizeImgContainer = styled.img`
     position: relative;
     width: 80%;
     left: 10%;
 `;
-// export const RewardImgContainer = styled.img`
+// export const PrizeImgContainer = styled.img`
 
 //     display: flex;
 //     justify-content: center;
@@ -97,6 +96,8 @@ export const WinnersViewContainer = styled.div`
     padding: 10px;
     margin-top: 32%;
     margin-left: 10%;
+    background-color: white;
+    opacity: 50%;
 `; 
 
 // export const NamesLoopContainer = styled.div`

@@ -13,4 +13,5 @@ export const NavigationContainer = styled.div`
 export const NavLink = styled(Link)`
   padding: 10px 15px;
   cursor: pointer;
+  color: #404040 ;
 `;

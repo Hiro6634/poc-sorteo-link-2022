@@ -5,7 +5,7 @@ import { EmployeeContext } from '../../context/employees.context';
 import Raffles from '../../components/raffles/raffles.component';
 import Button from '../../components/button/button.component';
 
-import { RaffleProcess, RunRaffleProcess, getWinners } from '../../business/raffle-process';
+import { getWinners } from '../../business/raffle-process';
 
 import { 
     AdministratorContainer, 
@@ -14,33 +14,24 @@ import {
 
 import { SaveWinners, excelAjson } from '../../utils/filesutils';
 import { WinnerContext } from '../../context/winners.context';
-import WinnersView from '../../components/winners-view/winners-view.component';
-import { Sleep } from '../../utils/utils';
 
 const Administration = () => {
+    const [loadButtonText, setLoadButtonText] = useState('CARGAR EMPLEADOS ');
     const navigate = useNavigate();
-    const {
-        employees,
-        loadEmployees, 
-    } = useContext(EmployeeContext);
+    const { loadEmployees } = useContext(EmployeeContext);
 
     const {
         getWinnersToSave, 
-        setWinners, 
-        winners
+        setWinners 
     } = useContext(WinnerContext);
 
     const { 
         raffles, 
         addRaffleWinner,
-        setRafflePaused,
-        getNextRaffle
+        setIsRunning,
     } = useContext(RaffleContext);
 
-    const { getWinnerByRaffleId }  = useContext(WinnerContext);
     const apiEmployeeContext = useContext(EmployeeContext);
-    const apiRaffleContext = useContext(RaffleContext);
-    
     const inputRef = useRef(null);
 
     const handleWinners = () => {
@@ -60,60 +51,13 @@ const Administration = () => {
         event.target.value = null;
 
         loadEmployees(await excelAjson(fileObj));
-    }
-
-    const RaffleProcess = async (raffleTime)=> {
-        const awaitTime = raffleTime * 1000;
-        console.log("AWAIT TIME:", awaitTime);
-        Sleep(awaitTime);
-        console.log("Start Raffle");
-    }
-
-    const Process = async () => {
-        console.log("START");
-        // await Sleep(raffles[0].tiempos.pre * 1000);
-        // console.log("Raffle ID:", raffles[0].id);
-        // await Sleep(raffles[1].tiempos.pre * 1000);
-        // console.log("Raffle ID:", raffles[1].id);
-
-
-        // await Sleep(raffles[2].tiempos.pre * 1000);
-        // console.log("Raffle ID:", raffles[2].id);
-
-        // raffles.map(async (raffle)=>{
-        //     // RaffleProcess(2);
-        //     delayedGreating();
-
-
-        // //         console.log("Start Lottery");
-        // //     });
-        // //     // Sleep(raffle.tiempos.pre * 1000);
-        // // //     console.log("Start Lottery");
-        // // //     const winList = raffle.winners;
-        // // //     const playTime = raffle.tiempos.duracion / raffle.ganadores;
-        // // //     winList.map(async(winner)=>{
-        // // //         await Sleep(playTime);
-        // // //         console.log("Update Winner")
-        // // //         setShowWinner(prevState => [...prevState, winner]);
-        // // //     })
-        // // //     console.log("Reset List");
-        // // //     setShowWinner([]);
-        //  });           
-        console.log("BYE") ;
-    }
-
-    const delayedGreating = async () => {
-        console.log("HELLO ");
-        await Sleep(2000);
-        console.log("World!");
-        await Sleep(2000);
-        console.log("Goodbye!");
-    }
-
-    const handleTest =  async () => {
         setWinners(getWinners( raffles, addRaffleWinner, apiEmployeeContext ))
+        setLoadButtonText("CARGAR EMPLEADOS *")
+    }
+
+    const handleStartLottery =  async () => {
         console.log("RAFFLES:", raffles);
-        Process();
+        setIsRunning(true);
         navigate('/lottery');
     }   
 
@@ -127,7 +71,9 @@ const Administration = () => {
                     onChange={handleFileChange}
                     accept=".xls, .xlsx"
                 />
-                <Button  onClick={handleLoadEmployees}>CARGAR EMPLEADOS</Button>
+                <Button  onClick={handleLoadEmployees}>
+                    {loadButtonText}
+                </Button>
             </LoadingButtonContainer>
             <LoadingButtonContainer>
                 <Button onClick={handleWinners}>DESCARGAR GANADORES</Button>            
@@ -136,7 +82,7 @@ const Administration = () => {
                 <Raffles/>
             </div>
             <div>
-            <Button  onClick={handleTest}>INICIAR SORTEO</Button>
+            <Button  onClick={handleStartLottery}>INICIAR SORTEO</Button>
             </div>
         </AdministratorContainer>
     );
