@@ -91,7 +91,6 @@ const Administration = () => {
             </div>
             <div style={{display: "flex"}}>
             <Button  onClick={handleStartLottery}>INICIAR SORTEO</Button>
-            <Button  onClick={()=>{console.log("RAFFLES:",raffles)}}>TEST</Button>
             </div>
         </AdministratorContainer>
     );
