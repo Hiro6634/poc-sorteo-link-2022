@@ -3,6 +3,17 @@ import { Link } from 'react-router-dom';
 
 export const RaffleItemContainer = styled.div`
     width: 100%;
+`;
+
+export const RaffleViewContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px;
+`;
+
+export const RaffleEditContainer = styled.form`
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     padding: 5px;
@@ -39,3 +50,10 @@ export const TimerContainer = styled.span`
     text-align: left;
 `;
 
+export const IconEditContainer = styled.img`
+    width: auto;
+    height: 18px;
+`;
+export const TimerInputContainer = styled.input`
+    width: 5%;  
+`;
