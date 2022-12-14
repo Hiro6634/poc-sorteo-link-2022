@@ -9,7 +9,8 @@
             "placa": 5,
             "pre": 2,
             "duracion": 10,
-            "pos":5 
+            "pos":5,
+            "total":0
         },
         "winners":[]
     },
@@ -23,7 +24,8 @@
             "placa": 5,
             "pre": 2,
             "duracion": 10,
-            "pos": 5
+            "pos": 5,
+            "total":0
         },
         "winners":[]
     },
@@ -37,7 +39,8 @@
             "placa": 5,
             "pre": 2,
             "duracion": 10,
-            "pos": 5
+            "pos": 5,
+            "total":0
         },
         "winners":[]
     },
@@ -51,7 +54,8 @@
             "placa": 5,
             "pre": 2,
             "duracion": 10,
-            "pos": 5
+            "pos": 5,
+            "total":0
         },
         "winners":[]
     },
@@ -65,7 +69,8 @@
             "placa": 5,
             "pre": 2,
             "duracion": 10,
-            "pos": 5
+            "pos": 5,
+            "total":0
         },
         "winners":[]
     },
@@ -79,7 +84,8 @@
             "placa": 5,
             "pre": 2,
             "duracion": 5,
-            "pos": 15
+            "pos": 15,
+            "total":0
         },
         "winners":[]
     }

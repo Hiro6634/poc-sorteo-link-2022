@@ -28,6 +28,10 @@ export const RafflesProvider = ({children}) => {
         raffles[index].tiempos = timmers;
     }
 
+    const getRafflesTotalTime = () => {
+        return raffles.reduce((total, raffle)=> (total + raffle.tiempos.total), 0);
+    }
+
     const setRaffleWinners = (raffle, amountWinners) => {
         const index = raffles.indexOf(raffle);
         raffles[index].ganadores = parseInt(amountWinners);
@@ -53,7 +57,8 @@ export const RafflesProvider = ({children}) => {
         isRunning,
         setIsRunning,
         countdown,
-        setCountdown
+        setCountdown,
+        getRafflesTotalTime
     };
     return(
         <RaffleContext.Provider value={value}>{children}</RaffleContext.Provider>

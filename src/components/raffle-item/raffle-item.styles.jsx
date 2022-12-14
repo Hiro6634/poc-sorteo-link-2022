@@ -31,22 +31,22 @@ export const IdContainer = styled.span`
 `;
 
 export const RewardContainer = styled.span`
-    width: 30%;
-    text-align: left;
-`;
-
-export const WinnersContainer = styled.span`
-    width: 15%;
-    text-align: center;
-`;
-
-export const StatusContainer = styled.span`
     width: 20%;
     text-align: left;
 `;
 
+export const WinnersContainer = styled.span`
+    width: 10%;
+    text-align: center;
+`;
+
+export const StatusContainer = styled.span`
+    width: 10%;
+    text-align: left;
+`;
+
 export const TimerContainer = styled.span`
-    width: 5%;
+    width: 7%;
     text-align: left;
 `;
 
@@ -55,7 +55,7 @@ export const IconEditContainer = styled.img`
     height: 18px;
 `;
 export const TimerInputContainer = styled.input`
-    width: 5%;  
+    width: 7%;  
 `;
 export const WinnersInputContainer = styled.input`
     width: 15%;

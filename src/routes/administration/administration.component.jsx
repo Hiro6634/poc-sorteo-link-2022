@@ -97,11 +97,11 @@ const Administration = () => {
             </div>
             <BottomButtonContainer>
                 <Button  onClick={handleStartLottery}>INICIAR SORTEO</Button>
-            </BottomButtonContainer>
+                <a href={hrefData} download='config.json'><IconButton src={DownloadIcon} alt="downoload"/></a>
+                </BottomButtonContainer>
         </AdministratorContainer>
     );
 }
-// <a href={hrefData} download='config.json'><IconButton src={DownloadIcon} alt="downoload"/></a>
 
 
 export default Administration;

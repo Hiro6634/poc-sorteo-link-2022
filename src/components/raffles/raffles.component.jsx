@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import RaffleItem from '../raffle-item/raffle-item.component';
 
@@ -17,7 +17,10 @@ import {
 } from './raffles.styles';
 
 const Raffles = () => {
-    const {raffles} = useContext(RaffleContext);
+    // const total = getRafflesTotalTime();
+    const {raffles, getRafflesTotalTime} = useContext(RaffleContext);
+
+    // console.log("Total Time:" + total);
 
     return(
         <RafflesContainer>
@@ -31,6 +34,7 @@ const Raffles = () => {
                 <TimerHdrContainer>Pre</TimerHdrContainer>
                 <TimerHdrContainer>Duracion</TimerHdrContainer>
                 <TimerHdrContainer>Pos</TimerHdrContainer>
+                <TimerHdrContainer>Total</TimerHdrContainer>
             </RaffleHdrTableContainer>
             <RafflesItems>
             {

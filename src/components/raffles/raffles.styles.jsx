@@ -32,22 +32,22 @@ export const IdHdrContainer = styled.span`
 `;
 
 export const RewardHdrContainer = styled.span`
-    width: 30%;
-    text-align: left;
-`;
-
-export const WinnersHdrContainer = styled.span`
-    width: 15%;
-    text-align: center;
-`;
-
-export const StatusHdrContainer = styled.span`
     width: 20%;
     text-align: left;
 `;
 
+export const WinnersHdrContainer = styled.span`
+    width: 10%;
+    text-align: center;
+`;
+
+export const StatusHdrContainer = styled.span`
+    width: 10%;
+    text-align: left;
+`;
+
 export const TimerHdrContainer = styled.span`
-    width: 5%;
+    width: 7%;
     text-align: left;
 `;
 
