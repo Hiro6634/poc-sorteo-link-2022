@@ -13,11 +13,18 @@ import {
     WinnersContainer,StatusContainer,
     TimerContainer,
     IconEditContainer,
-    TimerInputContainer
+    TimerInputContainer,
+    WinnersInputContainer,
+    StatusInputContainer
 } from './raffle-item.styles';
 
 const RaffleItem = ({raffle}) => {
-    const {setRaffleTimers, raffles} = useContext(RaffleContext);
+    const {
+        setRaffleTimers, 
+        setRaffleWinners,
+        setRaffleState,
+        raffles
+    } = useContext(RaffleContext);
     const { id, premio, ganadores, estado, tiempos } = raffle;
     const [isEditable, setIsEditable] = useState(false);
     const [rowFields, setRowFields] = useState({
@@ -46,20 +53,23 @@ const RaffleItem = ({raffle}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("Hey its me!");
         setIsEditable(false);
         const timmers = {
-            placa: rowFields.placa,
-            pre: rowFields.pre,
-            duracion: rowFields.duracion,
-            pos: rowFields.pos
+            placa: parseInt(rowFields.placa),
+            pre: parseInt(rowFields.pre),
+            duracion: parseInt(rowFields.duracion),
+            pos: parseInt(rowFields.pos)
             };
         setRaffleTimers(raffle, timmers);
+        setRaffleWinners(raffle, ganadores);
+        setRaffleState(raffle, estado);
         console.log("RAFFLES" , raffles);
     }
 
     //TODO: Crear una linea con imputs para editar
-    return(
+    // <WinnersInputContainer name='ganadores' value={rowFields.ganadores} onChange={handleChange}/>
+    // <StatusInputContainer name='estado' value={rowFields.estado} onChange={handleChange}/>
+return(
         <RaffleItemContainer>
         { 
             isEditable ? (

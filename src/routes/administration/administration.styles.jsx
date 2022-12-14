@@ -15,3 +15,16 @@ export const LoadingButtonContainer = styled.div`
     padding-bottom: 20px;
 
 `;
+
+export const BottomButtonContainer = styled.div`
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 20px;
+
+`;
+
+export const IconButton = styled.img`
+    height: 50px;
+`;

@@ -8,7 +8,7 @@ const WinnersView = (props) => {
         <WinnersViewContainer columns={columns}>
         {
             winnersList.map((winner) =>{
-                return(<div key={winner.id}>{winner.apellido + ", " + winner.nombre}</div>);
+                return(<div key={winner.id}>{(winner.apellido + ", " + winner.nombre).substring(0,(columns===3?26:100))}</div>);
             })
         }
         </WinnersViewContainer>
