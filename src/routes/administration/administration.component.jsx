@@ -97,13 +97,8 @@ const Administration = () => {
             </div>
             <BottomButtonContainer>
                 <Button  onClick={handleStartLottery}>INICIAR SORTEO</Button>
-                <Button  onClick={()=>{
-                    console.log("EMPLOYEES", employees);
-                    console.log("WINNERS", winners);
-                    console.log("LOOPNAMES", loopNames);
-                }}>TEST</Button>
                 <a href={hrefData} download='config.json'><IconButton src={DownloadIcon} alt="downoload"/></a>
-                </BottomButtonContainer>
+            </BottomButtonContainer>
         </AdministratorContainer>
     );
 }

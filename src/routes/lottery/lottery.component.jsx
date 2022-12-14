@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { RaffleContext, RaffleStates } from '../../context/raffles.context';
 import { LoopNamesContext } from '../../context/loopnames.context';
 
@@ -28,6 +29,7 @@ import {
 } from './lottery.styles';
 
 const Lottery = () => {
+    const navigate = useNavigate();
     const [isBusy, setIsBusy] = useState(false);
     const [winnersList, setWinnersList] = useState([]);
     const [columns, setColumns] = useState(1);
@@ -115,14 +117,11 @@ const Lottery = () => {
         }, winTimer);
     }
 
-    // const handleScreenClick = () =>{
-    //     new Promise((resolve, reject)=>{
-    //         setIsRunning(current =>!current);
-    //         resolve("OK");
-    //     }).then(()=>{
-    //         console.log("IsRUNNING:"+isRunning);
-    //     });
-    // }
+    const handleScreenClick = () =>{
+        if(!isRunning){
+            navigate('/')
+        }
+    }
 
     useEffect(() => { 
         if( !isRunning) return;
@@ -140,7 +139,7 @@ const Lottery = () => {
     },[isBusy, isRunning, winnersList, placa]);
 
     return(
-        <div>
+        <div onClick={handleScreenClick}>
         {
         placa?(
                 <RaffleTransitionContainer>
