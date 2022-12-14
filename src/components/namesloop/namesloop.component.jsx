@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 import TextLoop from 'react-text-loop';
 
@@ -10,7 +10,9 @@ import {
 
 const NamesLoop = ({interval=200}) => {
     const {employees} = useContext(EmployeeContext);
-
+    useEffect(()=>{
+        console.log("START LOOP", employees[0]);
+    })
     return(
         <NameLoopContainer>
             <TextLoop interval={interval}>

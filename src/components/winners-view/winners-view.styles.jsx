@@ -23,7 +23,7 @@ export const WinnersViewContainer = styled.div`
     font-size: 20px;
     font-weight: bold;
     line-height: 1.5;
-    color: blue;
+    color: |;
     /* color: #CB2b92; */
     /* color: #FF1696; */
 

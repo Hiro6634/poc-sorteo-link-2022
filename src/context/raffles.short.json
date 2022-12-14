@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "premio":"15mil pesos",
+        "ganadores":2,
+        "columnas":2,
+        "estado":"PENDIENTE",
+        "tiempos":{
+            "placa": 15,
+            "pre": 2,
+            "duracion": 10,
+            "pos":10,
+            "total":0
+        },
+        "winners":[]
+    }
+]
