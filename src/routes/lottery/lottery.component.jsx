@@ -91,7 +91,7 @@ const Lottery = () => {
             } else {
                 clearInterval(raffleInterval);
                 setRaffleState(raffle,RaffleStates.SORTEADO);
-                await Sleep(raffle.tiempos.pre * 1000);
+                await Sleep(raffle.tiempos.pos * 1000);
                 setIsBusy(false);
             }
         }, winTimer);
@@ -126,8 +126,10 @@ const Lottery = () => {
         }
     },[isBusy, isRunning, winnersList, placa]);
 
+    const pre = true;
 
-    return(<div>
+    return(
+        <div>
         {
         placa?(
                 <RaffleTransitionContainer>
@@ -139,10 +141,16 @@ const Lottery = () => {
                 <PrizeContainer>
                     <PrizeImgContainer src={prize}/>
                 </PrizeContainer>
-                <NamesLoopContainer>
+                {
+                    pre?(null):(
+                    <div>
+                    <NamesLoopContainer>
                     <NamesLoop interval={200}/>
-                </NamesLoopContainer>
-                <WinnersView winnersList={winnersList} columns={columns}/>
+                    </NamesLoopContainer>
+                    <WinnersView winnersList={winnersList} columns={columns}/>
+                    </div>    
+                    )
+                }
             </LotteryContainer>
         )
     }</div>
