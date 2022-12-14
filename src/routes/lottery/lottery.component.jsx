@@ -30,6 +30,7 @@ const Lottery = () => {
     const [columns, setColumns] = useState(1);
     const [prize, setPrize] = useState();
     const [placa, setPlaca] = useState(false);
+    const [pre, setPre] = useState(false);
     const [index, setIndex] = useState(0);
     const interval = 200;
 
@@ -87,7 +88,9 @@ const Lottery = () => {
         setWinnersList([]);
         setPrize(getRewardImg( raffle.premio));
         console.log("SORTEO: "+ raffle.premio);
+        setPre(true);
         await Sleep(raffle.tiempos.pre * 1000);
+        setPre(false);
         const raffleInterval = setInterval(async ()=>{
             const winner = winners.shift();
             if(winner){
@@ -101,7 +104,7 @@ const Lottery = () => {
                 setRaffleState(raffle,RaffleStates.SORTEADO);
                 await Sleep(raffle.tiempos.pos * 1000);
                 const rotateItems =  Math.floor(
-                    (raffle.tiempos.duracion + raffle.tiempos.pre + raffle.tiempos.pos )
+                    (raffle.tiempos.duracion + raffle.tiempos.pos )
                     * 1000 / interval);
                 rotateNames(rotateItems);
                 setIsBusy(false);
@@ -132,8 +135,6 @@ const Lottery = () => {
             }
         }
     },[isBusy, isRunning, winnersList, placa]);
-
-    const pre = false;
 
     return(
         <div>
