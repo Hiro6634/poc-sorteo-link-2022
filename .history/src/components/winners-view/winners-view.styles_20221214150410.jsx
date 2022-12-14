@@ -19,7 +19,7 @@ export const WinnersViewContainer = styled.div`
     margin-top: 35%;
     margin-left: 10%;
     background-color: white;
-    opacity: 85%;
+    opacity: 80%;
     font-size: 20px;
     font-weight: bold;
     line-height: 1.5;
