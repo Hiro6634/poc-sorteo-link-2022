@@ -16,8 +16,10 @@ const NamesLoop = ({interval=200}) => {
             <TextLoop interval={interval}>
                 {
                     employees.length ? (employees.map((employee)=>(
-                    <span key={employee.id}>{employee.Apellido}, {employee.Nombre}</span>
-    ))): (null)}
+                        <span key={employee.id}>{employee.Apellido}, {employee.Nombre}</span>
+                    ))):(
+                        null
+                    )}
             </TextLoop>
         </NameLoopContainer>
     );

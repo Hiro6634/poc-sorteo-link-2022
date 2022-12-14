@@ -14,7 +14,8 @@ export const NameLoopContainer = styled.div`
     font-weight: bold;
     border: 3px grey solid;
     border-radius: 15px;
-    color: blue;
+    /* color: blue; */
+    color: #FF1696;
     text-align: center;
     background-color: white ;
     opacity: .5;

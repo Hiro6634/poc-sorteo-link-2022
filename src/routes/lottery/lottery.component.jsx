@@ -140,7 +140,7 @@ const Lottery = () => {
                     <PrizeImgContainer src={prize}/>
                 </PrizeContainer>
                 <NamesLoopContainer>
-                    <NamesLoop/>
+                    <NamesLoop interval={200}/>
                 </NamesLoopContainer>
                 <WinnersView winnersList={winnersList} columns={columns}/>
             </LotteryContainer>

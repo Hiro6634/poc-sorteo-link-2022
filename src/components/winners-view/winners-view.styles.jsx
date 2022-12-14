@@ -24,5 +24,7 @@ export const WinnersViewContainer = styled.div`
     font-weight: bold;
     line-height: 1.5;
     color: blue;
+    /* color: #CB2b92; */
+    /* color: #FF1696; */
 
 `;
