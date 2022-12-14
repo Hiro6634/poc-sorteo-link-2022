@@ -41,6 +41,20 @@ export const PrizeImgContainer = styled.img`
     left: 10%;
 `;
 
+export const WinnerTitleContainer = styled.div`
+    width: 60%;
+    height: 40px;
+    position: absolute;
+    top: 47%;
+    left: 17%;
+`;
+
+export const WinnersTitleImgContainer = styled.img`
+    position: relative;
+    width: 60%;
+    left: 20%;
+`;
+
 export const NamesLoopContainer = styled.div`
     width: 60%;
     height: 120px;

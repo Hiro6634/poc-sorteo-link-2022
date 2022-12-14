@@ -12,6 +12,7 @@ import Prize30k from '../../assets/PantallasPremios-30mil.jpg';
 import Prize60k from '../../assets/PantallasPremios-60mil.jpg';
 import Prize80k from '../../assets/PantallasPremios-80mil.jpg';
 import PlacaSorteos from '../../assets/PantallasPremio_Fija.jpg'
+import Ganadores from '../../assets/ganadores.jpg';
 
 import { 
     LotteryContainer,
@@ -21,7 +22,9 @@ import {
     NamesLoopContainer,
     PrizeContainer,
     CountdownContainer,
-    RaffleTransitionContainer
+    RaffleTransitionContainer,
+    WinnerTitleContainer,
+    WinnersTitleImgContainer
 } from './lottery.styles';
 
 const Lottery = () => {
@@ -147,14 +150,17 @@ const Lottery = () => {
             ):(
             <LotteryContainer>
                 <PrizeContainer>
-                    <PrizeImgContainer src={prize}/>
+                    <PrizeImgContainer src={prize} alt='premio'/>
                 </PrizeContainer>
                 {
                     pre?(null):(
                     <div>
                     <NamesLoopContainer>
-                    <NamesLoop interval={interval}/>
+                        <NamesLoop interval={interval}/>
                     </NamesLoopContainer>
+                    <WinnerTitleContainer>
+                        <WinnersTitleImgContainer src={Ganadores} alt='ganadores'/>
+                    </WinnerTitleContainer>
                     <WinnersView winnersList={winnersList} columns={columns}/>
                     </div>    
                     )
