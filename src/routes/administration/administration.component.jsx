@@ -1,20 +1,24 @@
-import { useContext, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RaffleContext } from '../../context/raffles.context'; 
+import { RaffleContext, RaffleStates } from '../../context/raffles.context'; 
 import { EmployeeContext } from '../../context/employees.context';
 import Raffles from '../../components/raffles/raffles.component';
 import Button from '../../components/button/button.component';
+import DownloadIcon from '../../assets/download-icon-png-4388.png'
 
 import { getWinners } from '../../business/raffle-process';
 
 import { 
     AdministratorContainer, 
-    LoadingButtonContainer
+    LoadingButtonContainer,
+    BottomButtonContainer,
+    IconButton
 } from './administration.styles';
 
-import { SaveWinners, excelAjson } from '../../utils/filesutils';
+import { SaveWinners, excelAjson, GetUrlConfig } from '../../utils/filesutils';
 import { WinnerContext } from '../../context/winners.context';
 import { Sleep } from '../../utils/utils';
+import { RaffleHdrTableContainer } from '../../components/raffles/raffles.styles';
 
 const Administration = () => {
     const [loadButtonText, setLoadButtonText] = useState('CARGAR EMPLEADOS ');
@@ -48,27 +52,29 @@ const Administration = () => {
     const handleFileChange = async event => {
         const fileObj = event.target.files && event.target.files[0];
         if(!fileObj){
+            setIsLoading(false);
             return;
         }
         // reset file input
         event.target.value = null;
-        console.log("LoadEmployees:", fileObj);
         loadEmployees(await excelAjson(fileObj));
-        await Sleep(2000);
-        console.log("EMPLOYEES", employees);
         setIsLoading(false);
         setLoadButtonText("CARGAR EMPLEADOS *")
     }
 
     const handleStartLottery =  async () => {
-        console.log("EMPLOYEES", employees);
-        console.log("getWinners");
         setWinners(getWinners( raffles, addRaffleWinner, apiEmployeeContext ))
         console.log("RAFFLES:", raffles);
         setIsRunning(true);
         navigate('/lottery');
     }   
 
+    var hrefData = GetUrlConfig(raffles);
+
+    useEffect(()=>{
+        console.log("CFG:", raffles);
+        hrefData = GetUrlConfig(raffles);
+    },[raffles]);
     return(
         <AdministratorContainer>
             <LoadingButtonContainer>
@@ -89,13 +95,13 @@ const Administration = () => {
             <div>
                 <Raffles/>
             </div>
-            <div style={{display: "flex"}}>
-            <Button  onClick={handleStartLottery}>INICIAR SORTEO</Button>
-            <Button  onClick={()=>{console.log("RAFFLES:",raffles)}}>TEST</Button>
-            </div>
+            <BottomButtonContainer>
+                <Button  onClick={handleStartLottery}>INICIAR SORTEO</Button>
+            </BottomButtonContainer>
         </AdministratorContainer>
     );
 }
+// <a href={hrefData} download='config.json'><IconButton src={DownloadIcon} alt="downoload"/></a>
 
 
 export default Administration;

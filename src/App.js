@@ -1,18 +1,21 @@
 // import "tabler-react/dist/Tabler.css";
-
-import * as React from "react";
+import { useState, useContext } from 'react';
 import { Routes, Route } from "react-router-dom";
+import { UserContext } from './context/user.context';
 
 import Navigation from './routes/navigation/navigation.component';
 import Lottery from './routes/lottery/lottery.component';
 import Administration from './routes/administration/administration.component';
+// import Authentication from './routes/authentication/authentication.component';
 import Test from './routes/Test/test.component';
 
 const App = () => {
+  // const {user} = useContext(UserContext);
+  // const [logged, setLogged] = useState((user!==undefined || user !== null));
   return (
     <Routes>
       <Route path='/' element={<Navigation/>}>
-        <Route index element={<Administration />} />
+        <Route index element={<Administration />}/>
         <Route path='lottery' element={<Lottery/>} />
         <Route path='test' element={<Test/>}/>
       </Route>

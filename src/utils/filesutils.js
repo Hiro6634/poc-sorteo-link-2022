@@ -1,4 +1,5 @@
 import * as xlsx from 'xlsx';
+// const fs = require('fs');
 
 const readExcelAsync = (inputFile) => {
     const reader = new FileReader();
@@ -57,3 +58,14 @@ export const SaveWinners = (winners) => {
     xlsx.writeFile(wb,filename);
     return;
 }
+
+export const GetUrlConfig = (config) => {
+    const configStr = new Blob([JSON.stringify(config)],{type:'text/plain'});
+    return URL.createObjectURL(configStr);
+}
+
+// export const SaveConfig = (config) => {
+//     fs.writeFile('codngi.json', JSON.stringify(config), (err)=>{
+//         if (err) alert('Error writing file:', err);
+//     });
+// }

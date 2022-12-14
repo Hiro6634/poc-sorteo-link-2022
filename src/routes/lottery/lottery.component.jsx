@@ -7,6 +7,7 @@ import WinnersView from '../../components/winners-view/winners-view.component';
 import { Sleep } from '../../utils/utils';
 
 import Prize15k from '../../assets/PantallasPremios-15mil.jpg';
+import Prize20k from '../../assets/PantallasPremios-15mil.jpg';
 import Prize30k from '../../assets/PantallasPremios-30mil.jpg';
 import Prize60k from '../../assets/PantallasPremios-60mil.jpg';
 import Prize80k from '../../assets/PantallasPremios-80mil.jpg';
@@ -47,6 +48,8 @@ const Lottery = () => {
         switch(reward){
             case "15mil pesos":
                 return Prize15k;
+            case "20mil pesos":
+                return Prize20k;
             case "30mil pesos":
                 return Prize30k;
             case "60mil pesos":

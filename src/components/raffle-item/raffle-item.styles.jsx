@@ -57,3 +57,12 @@ export const IconEditContainer = styled.img`
 export const TimerInputContainer = styled.input`
     width: 5%;  
 `;
+export const WinnersInputContainer = styled.input`
+    width: 15%;
+    text-align: center;
+`;
+
+export const StatusInputContainer = styled.input`
+    width: 20%;
+    text-align: left;
+`;

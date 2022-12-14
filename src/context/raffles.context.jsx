@@ -28,6 +28,11 @@ export const RafflesProvider = ({children}) => {
         raffles[index].tiempos = timmers;
     }
 
+    const setRaffleWinners = (raffle, amountWinners) => {
+        const index = raffles.indexOf(raffle);
+        raffles[index].ganadores = parseInt(amountWinners);
+    }
+
     const setRaffleState = (raffle, state) => {
         const index = raffles.indexOf(raffle);
         raffles[index].estado = state;
@@ -43,6 +48,7 @@ export const RafflesProvider = ({children}) => {
         getNextRaffle,
         setRaffleState,
         setRaffleTimers,
+        setRaffleWinners,
         addRaffleWinner,
         isRunning,
         setIsRunning,

@@ -12,6 +12,8 @@ export const RafflesItems = styled.div`
 
 export const RafflesTitle = styled.h2`
     font-size: 24px;
+    text-align: center;
+    padding-top: 10px;
 `;
 
 export const RaffleHdrTableContainer = styled.div`
@@ -20,6 +22,7 @@ export const RaffleHdrTableContainer = styled.div`
     justify-content: flex-start;
     font-weight: bold;
     border-bottom: 1px solid black;
+    border-top: 2px solid black;
     padding: 5px;
 `;
 
