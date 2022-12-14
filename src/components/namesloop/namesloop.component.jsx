@@ -2,22 +2,19 @@ import { useContext, useEffect } from 'react';
 
 import TextLoop from 'react-text-loop';
 
-import { EmployeeContext } from '../../context/employees.context';
+import { LoopNamesContext } from '../../context/loopnames.context';
 
 import { 
     NameLoopContainer 
 } from './namesloop.style';
 
 const NamesLoop = ({interval=200}) => {
-    const {employees} = useContext(EmployeeContext);
-    useEffect(()=>{
-        console.log("START LOOP", employees[0]);
-    })
+    const {loopNames} = useContext(LoopNamesContext);
     return(
         <NameLoopContainer>
             <TextLoop interval={interval}>
                 {
-                    employees.length ? (employees.map((employee)=>(
+                    loopNames.length ? (loopNames.map((employee)=>(
                         <span key={employee.id}>{employee.Apellido}, {employee.Nombre}</span>
                     ))):(
                         null
