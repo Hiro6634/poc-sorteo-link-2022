@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { RaffleContext, RaffleStates } from '../../context/raffles.context';
-import { EmployeeContext } from '../../context/employees.context';
+import { LoopNamesContext } from '../../context/loopnames.context';
 
 import NamesLoop from '../../components/namesloop/namesloop.component';
 import WinnersView from '../../components/winners-view/winners-view.component';
-import { Sleep, arrayRotate } from '../../utils/utils';
+import { Sleep } from '../../utils/utils';
 
 import Prize15k from '../../assets/PantallasPremios-15mil.jpg';
 import Prize20k from '../../assets/PantallasPremios-20mil.jpg';
@@ -42,7 +42,8 @@ const Lottery = () => {
         setCountdown
     } = useContext(RaffleContext);
 
-    const { employees, loadEmployees} = useContext(EmployeeContext);
+    const { loopNames, rotateNames, findNameById, removeNameByIndex
+ } = useContext(LoopNamesContext);
 
     const addWinner = (winner) => {
         setWinnersList(old=>[...old, winner]);
@@ -92,6 +93,9 @@ const Lottery = () => {
             if(winner){
                 console.log(winner.apellido + ", "+ winner.nombre);
                 addWinner(winner);
+                const ix = loopNames.indexOf(findNameById(winner.id));
+                console.log("WINNER:" + winner.id + " " + ix);
+                removeNameByIndex(ix);
             } else {
                 clearInterval(raffleInterval);
                 setRaffleState(raffle,RaffleStates.SORTEADO);
@@ -99,7 +103,7 @@ const Lottery = () => {
                 const rotateItems =  Math.floor(
                     (raffle.tiempos.duracion + raffle.tiempos.pre + raffle.tiempos.pos )
                     * 1000 / interval);
-                loadEmployees(arrayRotate(employees, rotateItems));
+                rotateNames(rotateItems);
                 setIsBusy(false);
             }
         }, winTimer);

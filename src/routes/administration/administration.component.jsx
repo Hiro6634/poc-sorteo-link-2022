@@ -23,11 +23,12 @@ const Administration = () => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const { employees, loadEmployees } = useContext(EmployeeContext);
-    const { loopNames, setLoopNames } = useContext(LoopNamesContext);
+    const { loopNames, loadNewNames } = useContext(LoopNamesContext);
 
     const {
         getWinnersToSave, 
-        setWinners 
+        setWinners,
+        winners
     } = useContext(WinnerContext);
 
     const { 
@@ -62,7 +63,7 @@ const Administration = () => {
     }
 
     const handleStartLottery =  async () => {
-        setLoopNames(employees);
+        loadNewNames(employees);
         setWinners(getWinners( raffles, addRaffleWinner, apiEmployeeContext ))
         console.log("RAFFLES:", raffles);
         setIsRunning(true);
@@ -70,7 +71,6 @@ const Administration = () => {
     }   
 
     var hrefData = GetUrlConfig(raffles);
-
     useEffect(()=>{
         console.log("CFG:", raffles);
         hrefData = GetUrlConfig(raffles);
@@ -99,6 +99,7 @@ const Administration = () => {
                 <Button  onClick={handleStartLottery}>INICIAR SORTEO</Button>
                 <Button  onClick={()=>{
                     console.log("EMPLOYEES", employees);
+                    console.log("WINNERS", winners);
                     console.log("LOOPNAMES", loopNames);
                 }}>TEST</Button>
                 <a href={hrefData} download='config.json'><IconButton src={DownloadIcon} alt="downoload"/></a>
