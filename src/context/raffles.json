@@ -6,9 +6,9 @@
         "columnas":2,
         "estado":"PENDIENTE",
         "tiempos":{
-            "placa": 15,
-            "pre": 2,
-            "duracion": 10,
+            "placa": 5,
+            "pre": 5,
+            "duracion": 15,
             "pos":10,
             "total":0
         },
@@ -23,7 +23,7 @@
         "tiempos":{
             "placa": 10,
             "pre": 2,
-            "duracion": 10,
+            "duracion": 15,
             "pos":10,
             "total":0
         },

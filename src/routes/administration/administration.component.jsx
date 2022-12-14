@@ -1,11 +1,10 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RaffleContext, RaffleStates } from '../../context/raffles.context'; 
-import { EmployeeContext } from '../../context/employees.context';
 import Raffles from '../../components/raffles/raffles.component';
 import Button from '../../components/button/button.component';
 import DownloadIcon from '../../assets/download-icon-png-4388.png'
-
+import { SaveWinners, excelAjson, GetUrlConfig } from '../../utils/filesutils';
 import { getWinners } from '../../business/raffle-process';
 
 import { 
@@ -15,16 +14,16 @@ import {
     IconButton
 } from './administration.styles';
 
-import { SaveWinners, excelAjson, GetUrlConfig } from '../../utils/filesutils';
 import { WinnerContext } from '../../context/winners.context';
-import { Sleep } from '../../utils/utils';
-import { RaffleHdrTableContainer } from '../../components/raffles/raffles.styles';
+import { EmployeeContext } from '../../context/employees.context';
+import { LoopNamesContext } from '../../context/loopnames.context';
 
 const Administration = () => {
     const [loadButtonText, setLoadButtonText] = useState('CARGAR EMPLEADOS ');
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const { employees, loadEmployees } = useContext(EmployeeContext);
+    const { loopNames, setLoopNames } = useContext(LoopNamesContext);
 
     const {
         getWinnersToSave, 
@@ -63,6 +62,7 @@ const Administration = () => {
     }
 
     const handleStartLottery =  async () => {
+        setLoopNames(employees);
         setWinners(getWinners( raffles, addRaffleWinner, apiEmployeeContext ))
         console.log("RAFFLES:", raffles);
         setIsRunning(true);
@@ -97,6 +97,10 @@ const Administration = () => {
             </div>
             <BottomButtonContainer>
                 <Button  onClick={handleStartLottery}>INICIAR SORTEO</Button>
+                <Button  onClick={()=>{
+                    console.log("EMPLOYEES", employees);
+                    console.log("LOOPNAMES", loopNames);
+                }}>TEST</Button>
                 <a href={hrefData} download='config.json'><IconButton src={DownloadIcon} alt="downoload"/></a>
                 </BottomButtonContainer>
         </AdministratorContainer>

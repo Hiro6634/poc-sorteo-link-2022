@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { EmployeesProvider } from './context/employees.context';
 import { RafflesProvider } from './context/raffles.context';
 import { WinnersProvider } from './context/winners.context';
-import { UserProvider } from './context/user.context';
+import { LoopNamesProvider } from './context/loopnames.context';
 
 import './index.css';
 import App from './App';
@@ -16,9 +16,9 @@ ReactDOM.render(
             <EmployeesProvider>
                 <RafflesProvider>
                     <WinnersProvider>
-                        <UserProvider>
+                        <LoopNamesProvider>
                             <App /> 
-                        </UserProvider>
+                        </LoopNamesProvider>
                     </WinnersProvider>
                 </RafflesProvider>
             </EmployeesProvider>

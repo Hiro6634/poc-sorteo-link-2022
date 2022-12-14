@@ -1,13 +1,13 @@
-import NamesLoop from '../../components/namesloop/namesloop.component';
-
 import { useContext, useEffect, useState } from 'react';
 import { RaffleContext, RaffleStates } from '../../context/raffles.context';
+import { EmployeeContext } from '../../context/employees.context';
 
+import NamesLoop from '../../components/namesloop/namesloop.component';
 import WinnersView from '../../components/winners-view/winners-view.component';
-import { Sleep } from '../../utils/utils';
+import { Sleep, arrayRotate } from '../../utils/utils';
 
 import Prize15k from '../../assets/PantallasPremios-15mil.jpg';
-import Prize20k from '../../assets/PantallasPremios-15mil.jpg';
+import Prize20k from '../../assets/PantallasPremios-20mil.jpg';
 import Prize30k from '../../assets/PantallasPremios-30mil.jpg';
 import Prize60k from '../../assets/PantallasPremios-60mil.jpg';
 import Prize80k from '../../assets/PantallasPremios-80mil.jpg';
@@ -31,6 +31,7 @@ const Lottery = () => {
     const [prize, setPrize] = useState();
     const [placa, setPlaca] = useState(false);
     const [index, setIndex] = useState(0);
+    const interval = 200;
 
     const { 
         raffles,
@@ -40,6 +41,8 @@ const Lottery = () => {
         countdown,
         setCountdown
     } = useContext(RaffleContext);
+
+    const { employees, loadEmployees} = useContext(EmployeeContext);
 
     const addWinner = (winner) => {
         setWinnersList(old=>[...old, winner]);
@@ -73,6 +76,7 @@ const Lottery = () => {
             if( countdown>0){
                 setCountdown(old=>old-1)
             } else {
+                setCountdown(0);
                 clearInterval(countdownTimer);
             }
         }, 100);
@@ -92,6 +96,10 @@ const Lottery = () => {
                 clearInterval(raffleInterval);
                 setRaffleState(raffle,RaffleStates.SORTEADO);
                 await Sleep(raffle.tiempos.pos * 1000);
+                const rotateItems =  Math.floor(
+                    (raffle.tiempos.duracion + raffle.tiempos.pre + raffle.tiempos.pos )
+                    * 1000 / interval);
+                loadEmployees(arrayRotate(employees, rotateItems));
                 setIsBusy(false);
             }
         }, winTimer);
@@ -107,11 +115,6 @@ const Lottery = () => {
     // }
 
     useEffect(() => { 
-        console.log("DISPLAY HEIGHT:" + window.screen.availHeight);
-        console.log("DISPLAY WIDTH:" + window.screen.availWidth);
-        console.log("IS RUNNNG:" + isRunning);
-        console.log("ISBUSY:" + isBusy);
-        console.log("PLACA:" + placa);
         if( !isRunning) return;
         if(!isBusy){
             if( index < raffles.length ){
@@ -145,7 +148,7 @@ const Lottery = () => {
                     pre?(null):(
                     <div>
                     <NamesLoopContainer>
-                    <NamesLoop interval={200}/>
+                    <NamesLoop interval={interval}/>
                     </NamesLoopContainer>
                     <WinnersView winnersList={winnersList} columns={columns}/>
                     </div>    

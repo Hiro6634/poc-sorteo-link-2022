@@ -1,7 +1,6 @@
 // import "tabler-react/dist/Tabler.css";
 import { useState, useContext } from 'react';
 import { Routes, Route } from "react-router-dom";
-import { UserContext } from './context/user.context';
 
 import Navigation from './routes/navigation/navigation.component';
 import Lottery from './routes/lottery/lottery.component';
